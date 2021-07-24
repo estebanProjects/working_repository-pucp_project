@@ -31,7 +31,7 @@ let problemasElegidos
 
 
 if(materia != 'matematica') {
-    problemasElegidos = arrayProblemasPucp.filter(problema => problema.curso == materia)
+    problemasElegidos = arrayProblemasPucp_Ciencias.filter(problema => problema.curso == materia)
 } else if(materia == 'matematica') {
     problemasElegidos = arrayProblemasPucp  
 }

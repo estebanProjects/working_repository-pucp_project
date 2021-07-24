@@ -1,21 +1,22 @@
 
-let arrayProblemasPucp = [{ // ARITMETICA
+let arrayProblemasPucp_Ciencias = [{ // ARITMETICA
     imgProblema: "https://www.dl.dropboxusercontent.com/s/g2j6fjcnbuztr38/arit_problema1.jpg?dl=0",
     respuesta: "d",
     imgResolucion: "https://www.dl.dropboxusercontent.com/s/g56q75zuw78mr5p/arit_resolucion1.jpg?dl=0",
     curso: 'aritmetica',
     nivel: 'medio'
+},{
+    imgProblema: "https://www.dl.dropboxusercontent.com/s/mavkv85ow835rcw/arit_problema2.jpg?dl=0",
+    respuesta: "c",
+    imgResolucion: "https://www.dl.dropboxusercontent.com/s/1c4zyhwto5ptfcy/arit_resolucion2.jpg?dl=0",
+    curso: 'aritmetica'
+
+},{
+    imgProblema: "https://www.dl.dropboxusercontent.com/s/mef04tgcqm6susn/arit_problema3.jpg?dl=0",
+    respuesta: "c",
+    imgResolucion: "https://www.dl.dropboxusercontent.com/s/1zcbxmii9qn3pus/arit_resolucion3.jpg?dl=0",
+    curso: 'aritmetica'
 }
-// },{
-//     imgProblema: "./ejercicios/aritmetica/problemas/arit_problema2.jpg",
-//     respuesta: "c",
-//     imgResolucion: "./ejercicios/aritmetica/resolucion/arit_resolucion2.jpg",
-//     curso: 'aritmetica'
-// },{
-//     imgProblema: "./ejercicios/aritmetica/problemas/arit_problema3.jpg",
-//     respuesta: "c",
-//     imgResolucion: "./ejercicios/aritmetica/resolucion/arit_resolucion3.jpg",
-//     curso: 'aritmetica'
 // },{ // ALGEBRA
 //     imgProblema: "./ejercicios/algebra/problemas/alg_problema1.jpg",
 //     respuesta: "d",
