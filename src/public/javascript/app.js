@@ -33,7 +33,7 @@ let problemasElegidos
 if(materia != 'matematica') {
     problemasElegidos = arrayProblemasPucp_Ciencias.filter(problema => problema.curso == materia)
 } else if(materia == 'matematica') {
-    problemasElegidos = arrayProblemasPucp  
+    problemasElegidos = arrayProblemasPucp_Ciencias  
 }
 
 console.log(problemasElegidos)
