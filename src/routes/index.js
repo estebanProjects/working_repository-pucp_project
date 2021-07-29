@@ -5,31 +5,23 @@ router.get('/', (req, res) => {
     res.render('index.html', {title: 'Preguntas Pucp'});
 });
 
-// Ciencias
 router.get('/aritmetica', (req, res) => {
-    res.render('ciencias/aritmetica.html', {title: 'Aritmetica'});    
+    res.render('aritmetica.html', {title: 'Preguntas Aritmetica'});    
 });
 
 router.get('/algebra', (req, res) => {
-    res.render('ciencias/algebra.html', {title: 'Algebra'});    
+    res.render('algebra.html', {title: 'Preguntas Algebra'});    
 });
 
 router.get('/geometria', (req, res) => {
-    res.render('ciencias/geometria.html', {title: 'Geometria'});    
+    res.render('geometria.html', {title: 'Preguntas Geometria'});    
 });
 
 router.get('/matematica', (req, res) => {
-    res.render('ciencias/matematica.html', {title: 'Matematica'});    
+    res.render('matematica.html', {title: 'Preguntas Matematica'});    
 });
-
-// Letras
-router.get('/redaccion', (req, res) => {
-    res.render('letras/redaccion.html', {title: 'Redaccion'});    
+router.get('/lenguaje', (req, res) => {
+    res.render('lenguaje.html', {title: 'Preguntas Leanguaje'});    
 });
-
-router.get('/lectura', (req, res) => {
-    res.render('letras/lectura.html', {title: 'Lectura'});    
-});
-
 
 module.exports = router;

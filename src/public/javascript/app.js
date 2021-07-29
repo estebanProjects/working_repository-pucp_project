@@ -28,12 +28,12 @@ let godOrBad
 let rpta
 
 let problemasElegidos
-
+let tipo="letras" /* esta variable depende del tipo de problema que haya elegido el usuario,intenta crearla xd,luego puedes usarla para el tiempo y etc*/
 
 if(materia != 'matematica') {
-    problemasElegidos = arrayProblemasPucp_Ciencias.filter(problema => problema.curso == materia)
+    problemasElegidos = arrayProblemasPucp.filter(problema => problema.curso == materia)
 } else if(materia == 'matematica') {
-    problemasElegidos = arrayProblemasPucp_Ciencias  
+    problemasElegidos = arrayProblemasPucp
 }
 
 console.log(problemasElegidos)
@@ -59,6 +59,7 @@ let buenas = 0
 let malas = 0
 let blanco = 0
 
+
 function siguienteF() {
     if(problemasElegidos.length > 0) {
 
@@ -83,8 +84,11 @@ function siguienteF() {
 
         if(cont < lenghtInicial) {
             let imgProblema = problemasElegidos[number].imgProblema
-            space.innerHTML = "<img class='imgsize' src='" + imgProblema + "'>"  
-
+           /* if(tipo=ciencias){*/
+           /* space.innerHTML = "<img class='imgsize' src='" + imgProblema + "' style='max-width: 395px;min-height: 355px; '>"  
+            /*}if(tipo=letras){*/
+               space.innerHTML = "<div class='contenedorletras'><img class='imgsize' src='" + imgProblema + "' style='max-width: 28em;min-height: 355px;width:28em;'></div>"  
+            /*}*/
             minutos = 2
             segundos = 0
             correrTiempo()
@@ -114,8 +118,8 @@ function siguienteF() {
 
         correccion.innerHTML = "Corrección"
         spaceResolution.innerHTML = "Solución"
-    }
-
+    };
+    document.getElementsByClassName("time")[0].style.backgroundColor = "yellow"; /*ESTO HARA QUE EL BACKGROUND COLOR VUELVA A YELLOW*/
 
 }
 
@@ -181,11 +185,15 @@ function cargarSegundo() {
 
         if(segundos < 0) {
             segundos = 59
+
         }
     
         if(segundos < 10) {
-            txtSegundos = `0${segundos}` 
+            txtSegundos = `0${segundos}` ;
+          
+           
         } else {
+            
             txtSegundos = segundos
         }
         
@@ -208,12 +216,13 @@ function cargarMinutos(segundos){
     }
 
     if(minutos < 10) {
-        txtMinutos = `0${minutos}`
-        // txtMinutos = "0" + minutos
+        // txtMinutos = `0${minutos}`
+        txtMinutos = "0" + minutos
     } else {
         txtMinutos = minutos
     }
-
+    if(minutos==0){if( segundos == 0){document.getElementsByClassName("time")[0].style.backgroundColor = "red"}}
+    
     minHtml.innerHTML = txtMinutos
 }
 
