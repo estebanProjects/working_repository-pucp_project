@@ -90,8 +90,8 @@ a {
 .spaceForResolution-letras {    /*resolution*/
     
     max-width: 22.6em;
-    max-height: 2em;
-    height: 25em;
+    max-height: 25em;
+    height: 3.40em;
     width: 25em;
     background-color: rgba(117, 204, 95, 0.5);
     border:1px solid rgba(40, 168, 40, 0.336);
@@ -101,7 +101,7 @@ a {
     align-items: center;
     position: relative;
     right:6em;
-    bottom: 0.4em;
+    bottom: 0.2em;
     font-size: 2.5rem;
     border-radius: 3.7px;
 
@@ -153,7 +153,7 @@ a {
         padding: 5px;
         
     
-    }.spaceForProblems-letras::-webkit-scrollbar{background:rgba(26, 25, 25, 0.226);border-radius: 5px;}
+    }
     .spaceForProblems {
         min-width: 365px;
         min-height: 365px;
@@ -168,7 +168,7 @@ a {
     
         border-radius: 5px;
         font-size: 2rem;
-        overflow-y: scroll;
+        
         padding: 5px;
     }
 
@@ -195,7 +195,7 @@ a {
     padding: 5px;
 }
 
-.generaltime{background-color: green;border: 5px green solid;border-radius: 2px;position: absolute;left:30px;width: 78px;height: 34px;top:2.2em;left: 122em;display:flex;align-items: center;justify-content: center;}
+.generaltime{background-color: green;border: 5px green solid;border-radius: 2px;position: absolute;width: 78px;height: 34px;top:2.4em;left: 118em;display:flex;align-items: center;justify-content: center;}
 
 .solucionproblema{max-width: 30em;}
 
@@ -232,23 +232,27 @@ a {
         border-radius: 3.7px;
     }
     .correccion-letras {                /*correccion*/
-    top: 0.1em;
+    top: 0.2em;
     min-width: 10em;
-    max-height: 14em;
-    height: 25em;
+    max-height: 13.3em;
+    height: 20em;
     width: 22.6em;
     background-color: rgba(117, 204, 95, 0.5);
     border:1px solid rgba(40, 168, 40, 0.336);
     position: relative;
     right:6em;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    
+   justify-content: right;
+    align-items:center;
     
     font-size: 2.5rem;
     border-radius: 3.7px;
-}
+}.resp1{left:1.29em;position: relative;bottom:4em;}
+.resp2{left:0.11em;position: relative;bottom:1.3em;}
+.resp3{right:1em;position: relative;top:1.4em;}
+.resp4{right:2.18em;position: relative;top:4.1em;}
+#palabraCorreccion-letras{position: relative;left:3.5em;padding:4px}
 
     .god {
         padding: 5px 12px;

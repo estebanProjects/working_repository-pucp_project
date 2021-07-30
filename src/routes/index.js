@@ -21,7 +21,7 @@ router.get('/matematica', (req, res) => {
     res.render('matematica.html', {title: 'Preguntas Matematica'});    
 });
 router.get('/lenguaje', (req, res) => {
-    res.render('lenguaje.html', {title: 'Preguntas Leanguaje'});    
+    res.render('lenguaje.html', {title: 'Preguntas Lenguaje'});    
 });
 
 module.exports = router;
