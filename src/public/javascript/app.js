@@ -8,6 +8,8 @@ let spaceResolution = document.getElementById('spaceForResolution')
 let correccion = document.getElementById('correcion')
 let minHtml = document.getElementById('minutos')
 let segHtml = document.getElementById('segundos')
+let minHtmlGeneral = document.getElementById('minutos2')
+let segHtmlGeneral = document.getElementById('segundos2')
 let time = document.getElementById('time')
 let siguiente = document.getElementById('siguiente')
 let retroceder = document.getElementById('retroceder')
@@ -16,6 +18,9 @@ let number
 
 let minutos 
 let segundos 
+
+let minutosGeneral
+let segundosGeneral
 
 let idTiempo
 
@@ -33,21 +38,25 @@ let problemasElegidos
 let numeroDeProblema = 0
 
 let soloUnaVez = true
+let minutoDeGracia = 1
 
-if(materia != 'matematica') {
+if(materia == 'aritmetica' || materia == 'algebra' || materia == 'geometria') {
     problemasElegidos = arrayProblemasPucp.filter(problema => problema.curso == materia)
     mezclarArray(problemasElegidos)
 
     // variables por curso
     minutos = 2
     segundos = 0
-    
+    minutosGeneral = problemasElegidos.length*2 + minutoDeGracia 
+    segundosGeneral = 0
 } else if(materia == 'matematica'){
     problemasElegidos = arrayProblemasPucp
     mezclarArray(problemasElegidos)
 
     minutos = 2
     segundos = 0
+    minutosGeneral = problemasElegidos.length*2 + minutoDeGracia 
+    segundosGeneral = 0
 } else if(materia == 'redaccion') {
     problemasElegidos = arrayProblemasPucp_redaccion
     mezclarArray(problemasElegidos)
@@ -55,12 +64,15 @@ if(materia != 'matematica') {
     // variables por curso
     minutos = 0
     segundos = 30
+    minutosGeneral = 0 
+    segundosGeneral = problemasElegidos.length*30  
+    regularizarTiempo()
 
 } else if(materia == 'lectura') {
 
     mezclarArray(problemas_lectura)
 
-    for(let i=0; i < problemas_lectura.length; i++) {
+    for(let i=0; i < problemas_lectura.length; i++) { // pone todos los problemas de lectura en un array
         for(let j=0; j < problemas_lectura[i].length; j++) {
             arrayProblemasPucp_lectura.push(problemas_lectura[i][j])
         }
@@ -71,7 +83,9 @@ if(materia != 'matematica') {
     // variables por curso
     minutos = 0
     segundos = 30
-
+    minutosGeneral = 0 
+    segundosGeneral = problemasElegidos.length*30  
+    regularizarTiempo()
 }
 
 console.log(problemasElegidos)
@@ -81,7 +95,7 @@ let lenghtInicial = problemasElegidos.length
 empezar.addEventListener('click', empezarF)
 siguiente.addEventListener('click', siguienteF)
 comprobar.addEventListener('click', comprobarF)
-retroceder.addEventListener('click', retrocederF)
+// retroceder.addEventListener('click', retrocederF)
 
 // boton empezar
 function empezarF() {
@@ -323,8 +337,7 @@ function cargarMinutos(segundos){
     }
 
     if(minutos < 10) {
-        // txtMinutos = `0${minutos}`
-        txtMinutos = "0" + minutos
+        txtMinutos = `0${minutos}`
     } else {
         txtMinutos = minutos
     }
@@ -351,4 +364,13 @@ function contadorDeCorrectasIncorrectas() {
                 malas++
             }
         }
+}
+
+function regularizarTiempo() {
+    if(segundosGeneral >= 60) {
+        while(segundosGeneral >= 60) {
+          segundosGeneral = segundosGeneral - 60
+          minutosGeneral += 1
+        }
+    }
 }
