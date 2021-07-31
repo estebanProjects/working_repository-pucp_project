@@ -325,13 +325,18 @@ a {
     cursor: pointer;
 }
 
-.botons .siguiente {
+/* flecha izquierda */
+.fa-chevron-left {
     display: none;
-    font-size: 1.6rem;
-    padding: 3px 6px;
-    background-color: black;
-    color: white;
-    margin-top: 7px;
+    font-size: 40px;
+
+    cursor: pointer;
+}
+
+/* flecha derecha*/
+.fa-chevron-right {
+    display: none;
+    font-size: 40px;
 
     cursor: pointer;
 }

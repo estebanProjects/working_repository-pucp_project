@@ -1,7 +1,6 @@
 
 let empezar = document.getElementById('empezar')
 let cont_inp_comp = document.getElementById('cont-inp-comp')
-let siguiente = document.getElementById('siguiente')
 let comprobar = document.getElementById('comprobar')
 let space = document.getElementById('spaceForProblems')
 let input = document.getElementById('input')
@@ -10,15 +9,17 @@ let correccion = document.getElementById('correcion')
 let minHtml = document.getElementById('minutos')
 let segHtml = document.getElementById('segundos')
 let time = document.getElementById('time')
+let siguiente = document.getElementById('siguiente')
+let retroceder = document.getElementById('retroceder')
 
 let number
 
-let minutos = 2
-let segundos = 0
+let minutos 
+let segundos 
 
 let idTiempo
 
-let apretado = false
+let apretComprobar = false
 let apretSolucion = false
 let once = false
 
@@ -29,11 +30,46 @@ let rpta
 
 let problemasElegidos
 
+let numeroDeProblema = 0
 
 if(materia != 'matematica') {
     problemasElegidos = arrayProblemasPucp.filter(problema => problema.curso == materia)
-} else if(materia == 'matematica') {
+    mezclarArray(problemasElegidos)
+
+    // variables por curso
+    minutos = 2
+    segundos = 0
+    
+} else if(materia == 'matematica'){
     problemasElegidos = arrayProblemasPucp
+    mezclarArray(problemasElegidos)
+
+    minutos = 2
+    segundos = 0
+} else if(materia == 'redaccion') {
+    problemasElegidos = arrayProblemasPucp_redaccion
+    mezclarArray(problemasElegidos)
+
+    // variables por curso
+    minutos = 0
+    segundos = 30
+
+} else if(materia == 'lectura') {
+
+    mezclarArray(problemas_lectura)
+
+    for(let i=0; i < problemas_lectura.length; i++) {
+        for(let j=0; j < problemas_lectura[i].length; j++) {
+            arrayProblemasPucp_lectura.push(problemas_lectura[i][j])
+        }
+    }
+
+    problemasElegidos = arrayProblemasPucp_lectura
+
+    // variables por curso
+    minutos = 0
+    segundos = 30
+
 }
 
 console.log(problemasElegidos)
@@ -43,12 +79,14 @@ let lenghtInicial = problemasElegidos.length
 empezar.addEventListener('click', empezarF)
 siguiente.addEventListener('click', siguienteF)
 comprobar.addEventListener('click', comprobarF)
+retroceder.addEventListener('click', retrocederF)
 
 // boton empezar
 function empezarF() {
     empezar.style.display = 'none'
     cont_inp_comp.style.display = 'flex'
     siguiente.style.display = 'inline'
+    retroceder.style.display = 'inline'
 
     siguienteF()
 }
@@ -61,59 +99,74 @@ let blanco = 0
 
 
 function siguienteF() {
-    if(problemasElegidos.length > 0) {
-
+    if((problemasElegidos.length != numeroDeProblema+1) || ((numeroDeProblema == problemasElegidos.length - 1) && (apretSolucion == true)))  {    
+        console.log('caray')
         comprobar.style.display = 'inline'
+        
 
-        if((apretado == false || apretSolucion == false) && once == true) {
+        if((apretComprobar == false || apretSolucion == false) && once == true) {
             rpta = input.value.toLowerCase().trim()
-            console.log(problemasElegidos[number].respuesta)
-            acumulacionBuenasMalasBlanco()
-
-            problemasElegidos.splice(number, 1)
-            cont++
+            determinarEstadoDeLosProblemas()
+            problemasElegidos[numeroDeProblema].alternativaDelUsuario = rpta
+            numeroDeProblema++
+            console.log('pase por aqui')
         } else {
             once = true
         }
     
-        apretado = false
+        apretComprobar = false
         apretSolucion = false
         input.disabled = false
-        
-        number = randomNumber(0, problemasElegidos.length)
 
-        if(cont < lenghtInicial) {
-            let imgProblema = problemasElegidos[number].imgProblema;
+        if(problemasElegidos.length != numeroDeProblema) {
+            let imgProblema = problemasElegidos[numeroDeProblema].imgProblema;
             if(tipo=='ciencias'){
             space.innerHTML = "<img class='imgsize' src='" + imgProblema + "' style='max-width: 395px;min-height: 355px; '>"  
-            }if(tipo=='letras'){
-               space.innerHTML = "<div class='contenedorletras'><img class='imgsize' src='" + imgProblema + "' style='max-width: 28em;min-height: 355px;width:28em;'></div>"  
-            }
             minutos = 2
             segundos = 0
+            }if(tipo=='letras'){
+               space.innerHTML = "<div class='contenedorletras'><img class='imgsize' src='" + imgProblema + "' style='max-width: 28em;min-height: 355px;width:28em;'></div>"  
+               minutos = 0
+               segundos = 30
+            }
+
             correrTiempo()
 
+
+            input.value = problemasElegidos[numeroDeProblema].alternativaDelUsuario
         } else {
+            console.log("PAPA")
+            // capturando los datos del ultimo problema
+            rpta = input.value.toLowerCase().trim()
+            numeroDeProblema--
+            determinarEstadoDeLosProblemas()
+            problemasElegidos[numeroDeProblema].alternativaDelUsuario = rpta
+            
             time.innerHTML = "¡Terminaste!"
             input.disabled = true
             comprobar.style.display = 'none'
 
-            space.innerHTML = "<p>Tuviste <strong>" + buenas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + malas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco + "</strong> en blanco <i class='fas fa-circle'></i></p>"
+            space.innerHTML = "<p>Tuviste WEIRU <strong>" + buenas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + malas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco + "</strong> en blanco <i class='fas fa-circle'></i></p>"
             clearInterval(idTiempo)
         }
         
         
-        input.value = ""
         correccion.innerHTML = "Corrección"
         spaceResolution.innerHTML = "Solución"
 
     
     } else {
+        console.log("Cebolla")
+        // capturando los datos del ultimo problema
+        rpta = input.value.toLowerCase().trim()
+        determinarEstadoDeLosProblemas()
+        problemasElegidos[numeroDeProblema].alternativaDelUsuario = rpta
+
         time.innerHTML = "¡Terminaste!"
         input.disabled = true
         comprobar.style.display = 'none'
 
-        space.innerHTML = "<p>Tuviste <strong>" + buenas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + malas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco + "</strong> en blanco <i class='fas fa-circle'></i></p>"
+        space.innerHTML = "<p>Tuviste YUpi <strong>" + buenas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + malas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco + "</strong> en blanco <i class='fas fa-circle'></i></p>"
         clearInterval(idTiempo)
 
         correccion.innerHTML = "Corrección"
@@ -123,13 +176,37 @@ function siguienteF() {
 
 }
 
+function retrocederF() {
+    
+    if(numeroDeProblema != 0){
+        numeroDeProblema--
+        input.value = problemasElegidos[numeroDeProblema].alternativaDelUsuario
+
+
+        let imgProblema = problemasElegidos[numeroDeProblema].imgProblema;
+        if(tipo=='ciencias'){
+        space.innerHTML = "<img class='imgsize' src='" + imgProblema + "' style='max-width: 395px;min-height: 355px; '>"  
+        minutos = 2
+        segundos = 0
+        }if(tipo=='letras'){
+           space.innerHTML = "<div class='contenedorletras'><img class='imgsize' src='" + imgProblema + "' style='max-width: 28em;min-height: 355px;width:28em;'></div>"  
+           minutos = 0
+           segundos = 30
+        }
+
+        correrTiempo()
+    }
+    
+}
+
 
 
 function comprobarF() {
     comprobar.style.display = 'none'
     rpta = input.value.toLowerCase().trim()
+    problemasElegidos[numeroDeProblema].alternativaDelUsuario = rpta
 
-    if(problemasElegidos[number].respuesta == rpta) {
+    if(problemasElegidos[numeroDeProblema].respuesta == rpta) {
         correccion.innerHTML = "<p class='god' id='god'>¡Correcto!</p>" + "<a class='showResolution' id='showResolution'> Ver solución </a>"
         showResolution1 = document.getElementById('showResolution')
         godOrBad = document.getElementById('god')
@@ -141,7 +218,7 @@ function comprobarF() {
         showResolution1.addEventListener('click', mostrarSolucion)
     }
 
-    apretado = true
+    apretComprobar = true
     input.disabled = true
     clearInterval(idTiempo)
 }
@@ -149,27 +226,30 @@ function comprobarF() {
 function mostrarSolucion() {
 
     
-    let imgResolucion = problemasElegidos[number].imgResolucion
+    let imgResolucion = problemasElegidos[numeroDeProblema].imgResolucion
     spaceResolution.innerHTML = "<img class='imgResolutionSize' src='" + imgResolucion + "'>"
-    console.log(problemasElegidos[number].respuesta)
-    acumulacionBuenasMalasBlanco()
 
-    problemasElegidos.splice(number, 1)
+
+    determinarEstadoDeLosProblemas()
+    // problemasElegidos[numeroDeProblema].alternativaDelUsuario = rpta
+    numeroDeProblema++
+    console.log('Yuju')
     
     apretSolucion = true
-    cont++
 
     showResolution1.style.display = 'none'
     godOrBad.style.marginBottom = "0"
 }
 
-function acumulacionBuenasMalasBlanco() {
-    if(problemasElegidos[number].respuesta == rpta) {
-        buenas++
+function determinarEstadoDeLosProblemas() {
+    if(problemasElegidos[numeroDeProblema].respuesta == rpta) {
+        problemasElegidos[numeroDeProblema].estado = "correcto"
+
     } else if(rpta == "") {
-        blanco++
-    } else if(problemasElegidos[number].respuesta != rpta) {
-        malas++
+        problemasElegidos[numeroDeProblema].estado = "blanco"
+
+    } else if(problemasElegidos[numeroDeProblema].respuesta != rpta) {
+        problemasElegidos[numeroDeProblema].estado = "incorrecto"
     }
 }
 
@@ -228,4 +308,8 @@ function cargarMinutos(segundos){
 
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
+}
+
+function mezclarArray(inputArray){ // funcion para aleatorizar los problemas
+    inputArray.sort(()=> Math.random() - 0.5);
 }
