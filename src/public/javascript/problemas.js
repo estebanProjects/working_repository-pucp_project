@@ -4,6 +4,7 @@ let arrayProblemasPucp = [{ // ARITMETICA
     respuesta: "d",
     alternativaDelUsuario: "",
     estado: "", // correcto o incorrecto
+    inputDeshabilitado: false,
     imgResolucion: "./ejercicios/aritmetica/resolucion/arit_resolucion1.jpg",
     curso: 'aritmetica'
 },{
@@ -11,6 +12,7 @@ let arrayProblemasPucp = [{ // ARITMETICA
     respuesta: "c",
     alternativaDelUsuario: "",
     estado: "",
+    inputDeshabilitado: false,
     imgResolucion: "./ejercicios/aritmetica/resolucion/arit_resolucion2.jpg",
     curso: 'aritmetica'
 },{
@@ -18,6 +20,7 @@ let arrayProblemasPucp = [{ // ARITMETICA
     respuesta: "c",
     alternativaDelUsuario: "",
     estado: "",
+    inputDeshabilitado: false,
     imgResolucion: "./ejercicios/aritmetica/resolucion/arit_resolucion3.jpg",
     curso: 'aritmetica'
 },{ // ALGEBRA
@@ -25,6 +28,7 @@ let arrayProblemasPucp = [{ // ARITMETICA
     respuesta: "d",
     alternativaDelUsuario: "",
     estado: "",
+    inputDeshabilitado: false,
     imgResolucion: "./ejercicios/algebra/resolucion/alg_resolucion1.jpg",
     curso: 'algebra'
 },{
@@ -32,6 +36,7 @@ let arrayProblemasPucp = [{ // ARITMETICA
     respuesta: "b",
     alternativaDelUsuario: "",
     estado: "",
+    inputDeshabilitado: false,
     imgResolucion: "./ejercicios/algebra/resolucion/alg_resolucion2.jpg",
     curso: 'algebra'
 },{
@@ -39,6 +44,7 @@ let arrayProblemasPucp = [{ // ARITMETICA
     respuesta: "b",
     alternativaDelUsuario: "",
     estado: "",
+    inputDeshabilitado: false,
     imgResolucion: "./ejercicios/algebra/resolucion/alg_resolucion3.jpg",
     curso: 'algebra'
 },{ // GEOMETRIA
@@ -46,6 +52,7 @@ let arrayProblemasPucp = [{ // ARITMETICA
     respuesta: "d",
     alternativaDelUsuario: "",
     estado: "",
+    inputDeshabilitado: false,
     imgResolucion: "./ejercicios/geometria/resolucion/geo_resolucion1.jpg",
     curso: 'geometria'
 },{
@@ -53,6 +60,7 @@ let arrayProblemasPucp = [{ // ARITMETICA
     respuesta: "a",
     alternativaDelUsuario: "",
     estado: "",
+    inputDeshabilitado: false,
     imgResolucion: "./ejercicios/geometria/resolucion/geo_resolucion2.jpg",
     curso: 'geometria'
 },{
@@ -60,6 +68,7 @@ let arrayProblemasPucp = [{ // ARITMETICA
     respuesta: "a",
     alternativaDelUsuario: "",
     estado: "",
+    inputDeshabilitado: false,
     imgResolucion: "./ejercicios/geometria/resolucion/geo_resolucion3.jpg",
     curso: 'geometria'
 }

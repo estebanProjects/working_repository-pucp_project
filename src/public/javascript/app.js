@@ -32,6 +32,8 @@ let problemasElegidos
 
 let numeroDeProblema = 0
 
+let soloUnaVez = true
+
 if(materia != 'matematica') {
     problemasElegidos = arrayProblemasPucp.filter(problema => problema.curso == materia)
     mezclarArray(problemasElegidos)
@@ -116,7 +118,9 @@ function siguienteF() {
     
         apretComprobar = false
         apretSolucion = false
-        input.disabled = false
+        if(numeroDeProblema != problemasElegidos.length) {
+            input.disabled = problemasElegidos[numeroDeProblema].inputDeshabilitado
+        }
 
         if(problemasElegidos.length != numeroDeProblema) {
             let imgProblema = problemasElegidos[numeroDeProblema].imgProblema;
@@ -144,10 +148,20 @@ function siguienteF() {
             
             time.innerHTML = "¡Terminaste!"
             input.disabled = true
-            comprobar.style.display = 'none'
+            // comprobar.style.display = 'none'
+            comprobar.disabled = true
 
+            if (soloUnaVez == true) {
+                contadorDeCorrectasIncorrectas()
+                soloUnaVez = false
+            }
             space.innerHTML = "<p>Tuviste <strong>" + buenas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + malas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco + "</strong> en blanco <i class='fas fa-circle'></i></p>"
+            numeroDeProblema++
             clearInterval(idTiempo)
+
+            for(let i=0; i<problemasElegidos.length; i++) {
+                problemasElegidos[i].inputDeshabilitado = true
+            }
         }
         
         
@@ -164,16 +178,26 @@ function siguienteF() {
 
         time.innerHTML = "¡Terminaste!"
         input.disabled = true
-        comprobar.style.display = 'none'
+        // comprobar.style.display = 'none'
+        comprobar.disabled = true
 
+        if (soloUnaVez == true) {
+            contadorDeCorrectasIncorrectas()
+            soloUnaVez = false
+        }
         space.innerHTML = "<p>Tuviste <strong>" + buenas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + malas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco + "</strong> en blanco <i class='fas fa-circle'></i></p>"
+        numeroDeProblema++
         clearInterval(idTiempo)
+
+        for(let i=0; i<problemasElegidos.length; i++) {
+            problemasElegidos[i].inputDeshabilitado = true
+        }
 
         correccion.innerHTML = "Corrección"
         spaceResolution.innerHTML = "Solución"
     };
     document.getElementsByClassName("time")[0].style.backgroundColor = "yellow"; /*ESTO HARA QUE EL BACKGROUND COLOR VUELVA A YELLOW*/
-
+    comprobar.disabled = false
 }
 
 function retrocederF() {
@@ -181,7 +205,9 @@ function retrocederF() {
     if(numeroDeProblema != 0){
         numeroDeProblema--
         input.value = problemasElegidos[numeroDeProblema].alternativaDelUsuario
-
+        input.disabled = problemasElegidos[numeroDeProblema].inputDeshabilitado
+        comprobar.style.display = 'inline'
+        comprobar.disabled = false
 
         let imgProblema = problemasElegidos[numeroDeProblema].imgProblema;
         if(tipo=='ciencias'){
@@ -220,6 +246,8 @@ function comprobarF() {
 
     apretComprobar = true
     input.disabled = true
+    problemasElegidos[numeroDeProblema].inputDeshabilitado = true
+
     clearInterval(idTiempo)
 }
 
@@ -231,7 +259,6 @@ function mostrarSolucion() {
 
 
     determinarEstadoDeLosProblemas()
-    // problemasElegidos[numeroDeProblema].alternativaDelUsuario = rpta
     numeroDeProblema++
     console.log('Yuju')
     
@@ -312,4 +339,16 @@ function randomNumber(min, max) {
 
 function mezclarArray(inputArray){ // funcion para aleatorizar los problemas
     inputArray.sort(()=> Math.random() - 0.5);
+}
+
+function contadorDeCorrectasIncorrectas() {
+        for(let i=0; i < problemasElegidos.length; i++){
+            if(problemasElegidos[i].estado == "correcto"){
+                buenas++
+            } else if(problemasElegidos[i].estado == "blanco"){
+                blanco++
+            } else if(problemasElegidos[i].estado == "incorrecto"){
+                malas++
+            }
+        }
 }
