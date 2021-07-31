@@ -23,6 +23,7 @@ let minutosGeneral
 let segundosGeneral
 
 let idTiempo
+let idTiempoGeneral
 
 let apretComprobar = false
 let apretSolucion = false
@@ -95,7 +96,7 @@ let lenghtInicial = problemasElegidos.length
 empezar.addEventListener('click', empezarF)
 siguiente.addEventListener('click', siguienteF)
 comprobar.addEventListener('click', comprobarF)
-// retroceder.addEventListener('click', retrocederF)
+retroceder.addEventListener('click', retrocederF)
 
 // boton empezar
 function empezarF() {
@@ -215,7 +216,7 @@ function siguienteF() {
 }
 
 function retrocederF() {
-    
+    console.log('sd')
     if(numeroDeProblema != 0){
         numeroDeProblema--
         input.value = problemasElegidos[numeroDeProblema].alternativaDelUsuario
@@ -297,7 +298,11 @@ function determinarEstadoDeLosProblemas() {
 
 function correrTiempo() {
     clearInterval(idTiempo)
+
     idTiempo = setInterval(cargarSegundo, 1000)
+
+    // clearInterval(idTiempoGeneral)
+    // idTiempoGeneral = setInterval(function(){tiempo(minutosGeneral, segundosGeneral, minHtmlGeneral, segHtmlGeneral)}, 1000)
 }
 
 function cargarSegundo() {
