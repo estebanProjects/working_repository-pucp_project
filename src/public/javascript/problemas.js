@@ -1,75 +1,75 @@
 
 let arrayProblemasPucp = [{ // ARITMETICA
-    imgProblema: "./ejercicios/aritmetica/problemas/arit_problema1.jpg",
+    imgProblema: "https://www.dl.dropboxusercontent.com/s/1np9m5htupyxarg/arit_problema1.png?dl=0",
     respuesta: "d",
     alternativaDelUsuario: "",
     estado: "", // correcto o incorrecto
     inputDeshabilitado: false,
-    imgResolucion: "./ejercicios/aritmetica/resolucion/arit_resolucion1.jpg",
+    imgResolucion: "https://www.dl.dropboxusercontent.com/s/lu0zdvbtqst45ci/arit_resolucion1.png?dl=0",
     curso: 'aritmetica'
 },{
-    imgProblema: "./ejercicios/aritmetica/problemas/arit_problema2.jpg",
+    imgProblema: "https://www.dl.dropboxusercontent.com/s/v8tognxxdpcocxw/arit_problema2.jpg?dl=0",
     respuesta: "c",
     alternativaDelUsuario: "",
     estado: "",
     inputDeshabilitado: false,
-    imgResolucion: "./ejercicios/aritmetica/resolucion/arit_resolucion2.jpg",
+    imgResolucion: "https://www.dl.dropboxusercontent.com/s/w0i2sy619msy9yd/arit_resolucion2.jpg?dl=0",
     curso: 'aritmetica'
 },{
-    imgProblema: "./ejercicios/aritmetica/problemas/arit_problema3.jpg",
+    imgProblema: "https://www.dl.dropboxusercontent.com/s/stpwybg7slrtduz/arit_problema3.jpg?dl=0",
     respuesta: "c",
     alternativaDelUsuario: "",
     estado: "",
     inputDeshabilitado: false,
-    imgResolucion: "./ejercicios/aritmetica/resolucion/arit_resolucion3.jpg",
+    imgResolucion: "https://www.dl.dropboxusercontent.com/s/1zcbxmii9qn3pus/arit_resolucion3.jpg?dl=0",
     curso: 'aritmetica'
 },{ // ALGEBRA
-    imgProblema: "./ejercicios/algebra/problemas/alg_problema1.jpg",
+    imgProblema: "https://www.dl.dropboxusercontent.com/s/c4f6uxs48ajargv/alg_problema1.jpg?dl=0",
     respuesta: "d",
     alternativaDelUsuario: "",
     estado: "",
     inputDeshabilitado: false,
-    imgResolucion: "./ejercicios/algebra/resolucion/alg_resolucion1.jpg",
+    imgResolucion: "https://www.dl.dropboxusercontent.com/s/2bov25z4t3eh98q/alg_resolucion1.jpg?dl=0",
     curso: 'algebra'
 },{
-    imgProblema: "./ejercicios/algebra/problemas/alg_problema2.jpg",
+    imgProblema: "https://www.dl.dropboxusercontent.com/s/1f4ix7a1by17zls/alg_problema2.jpg?dl=0",
     respuesta: "b",
     alternativaDelUsuario: "",
     estado: "",
     inputDeshabilitado: false,
-    imgResolucion: "./ejercicios/algebra/resolucion/alg_resolucion2.jpg",
+    imgResolucion: "https://www.dl.dropboxusercontent.com/s/vf5uq6mxl1swzb9/alg_resolucion2.jpg?dl=0",
     curso: 'algebra'
 },{
-    imgProblema: "./ejercicios/algebra/problemas/alg_problema3.jpg",
+    imgProblema: "https://www.dl.dropboxusercontent.com/s/40wgb537vvowfcj/alg_problema3.jpg?dl=0",
     respuesta: "b",
     alternativaDelUsuario: "",
     estado: "",
     inputDeshabilitado: false,
-    imgResolucion: "./ejercicios/algebra/resolucion/alg_resolucion3.jpg",
+    imgResolucion: "https://www.dl.dropboxusercontent.com/s/ri7q8h0omsxfje1/alg_resolucion3.jpg?dl=0",
     curso: 'algebra'
 },{ // GEOMETRIA
-    imgProblema: "./ejercicios/geometria/problemas/geo_problema1.jpg", // cambiar de ejercicio - resolucion mal hecha
+    imgProblema: "https://www.dl.dropboxusercontent.com/s/uc6fg7eck63bs4t/geo_problema1.jpg?dl=0", // cambiar de ejercicio - resolucion mal hecha
     respuesta: "d",
     alternativaDelUsuario: "",
     estado: "",
     inputDeshabilitado: false,
-    imgResolucion: "./ejercicios/geometria/resolucion/geo_resolucion1.jpg",
+    imgResolucion: "https://www.dl.dropboxusercontent.com/s/ependyb6pn68a1s/geo_resolucion1.jpg?dl=0",
     curso: 'geometria'
 },{
-    imgProblema: "./ejercicios/geometria/problemas/geo_problema2.jpg", 
+    imgProblema: "https://www.dl.dropboxusercontent.com/s/ie1zs00cy205mcd/geo_problema2.jpg?dl=0", 
     respuesta: "a",
     alternativaDelUsuario: "",
     estado: "",
     inputDeshabilitado: false,
-    imgResolucion: "./ejercicios/geometria/resolucion/geo_resolucion2.jpg",
+    imgResolucion: "https://www.dl.dropboxusercontent.com/s/rh2lyk9dopp5pd2/geo_resolucion2.jpg?dl=0",
     curso: 'geometria'
 },{
-    imgProblema: "./ejercicios/geometria/problemas/geo_problema3.jpg", 
+    imgProblema: "https://www.dl.dropboxusercontent.com/s/h8b1tc99md8nd3j/geo_problema3.jpg?dl=0", 
     respuesta: "a",
     alternativaDelUsuario: "",
     estado: "",
     inputDeshabilitado: false,
-    imgResolucion: "./ejercicios/geometria/resolucion/geo_resolucion3.jpg",
+    imgResolucion: "https://www.dl.dropboxusercontent.com/s/vv1kc4kuaa5b540/geo_resolucion3.jpg?dl=0",
     curso: 'geometria'
 }
 ]
