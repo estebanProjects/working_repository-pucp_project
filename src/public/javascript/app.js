@@ -16,8 +16,8 @@ let retroceder = document.getElementById('retroceder')
 
 let number
 
-let minutos 
-let segundos 
+let minutosParcial 
+let segundosParcial 
 
 let minutosGeneral
 let segundosGeneral
@@ -45,17 +45,17 @@ if(materia == 'aritmetica' || materia == 'algebra' || materia == 'geometria') {
     problemasElegidos = arrayProblemasPucp.filter(problema => problema.curso == materia)
     mezclarArray(problemasElegidos)
 
-    // variables por curso
-    minutos = 2
-    segundos = 0
+    // VARIABLES POR CURSO***
+    minutosParcial = 2
+    segundosParcial = 0
     minutosGeneral = problemasElegidos.length*2 + minutoDeGracia 
     segundosGeneral = 0
 } else if(materia == 'matematica'){
     problemasElegidos = arrayProblemasPucp
     mezclarArray(problemasElegidos)
 
-    minutos = 2
-    segundos = 0
+    minutosParcial = 2
+    segundosparcial = 0
     minutosGeneral = problemasElegidos.length*2 + minutoDeGracia 
     segundosGeneral = 0
 } else if(materia == 'redaccion') {
@@ -63,8 +63,8 @@ if(materia == 'aritmetica' || materia == 'algebra' || materia == 'geometria') {
     mezclarArray(problemasElegidos)
 
     // variables por curso
-    minutos = 0
-    segundos = 30
+    minutosParcial = 0
+    segundosParcial = 30
     minutosGeneral = 0 
     segundosGeneral = problemasElegidos.length*30  
     regularizarTiempo()
@@ -82,8 +82,8 @@ if(materia == 'aritmetica' || materia == 'algebra' || materia == 'geometria') {
     problemasElegidos = arrayProblemasPucp_lectura
 
     // variables por curso
-    minutos = 0
-    segundos = 30
+    minutosParcial = 0
+    segundosParcial = 30
     minutosGeneral = 0 
     segundosGeneral = problemasElegidos.length*30  
     regularizarTiempo()
@@ -141,15 +141,15 @@ function siguienteF() {
             let imgProblema = problemasElegidos[numeroDeProblema].imgProblema;
             if(tipo=='ciencias'){
             space.innerHTML = "<img class='imgsize' src='" + imgProblema + "' style='max-width: 395px;min-height: 355px; '>"  
-            minutos = 2
-            segundos = 0
+            minutosParcial = 2
+            segundosParcial = 0
             }if(tipo=='letras'){
                space.innerHTML = "<div class='contenedorletras'><img class='imgsize' src='" + imgProblema + "' style='max-width: 28em;min-height: 355px;width:28em;'></div>"  
-               minutos = 0
-               segundos = 30
+               minutosParcial = 0
+               segundosParcial = 30
             }
 
-            correrTiempo()
+            correrTiempo("normal");
 
 
             input.value = problemasElegidos[numeroDeProblema].alternativaDelUsuario
@@ -227,15 +227,15 @@ function retrocederF() {
         let imgProblema = problemasElegidos[numeroDeProblema].imgProblema;
         if(tipo=='ciencias'){
         space.innerHTML = "<img class='imgsize' src='" + imgProblema + "' style='max-width: 395px;min-height: 355px; '>"  
-        minutos = 2
-        segundos = 0
+        minutosParcial = 2
+        segundosParcial = 0
         }if(tipo=='letras'){
            space.innerHTML = "<div class='contenedorletras'><img class='imgsize' src='" + imgProblema + "' style='max-width: 28em;min-height: 355px;width:28em;'></div>"  
-           minutos = 0
-           segundos = 30
+           minutosParcial = 0
+           segundosParcial = 30
         }
 
-        correrTiempo()
+        correrTiempo("normal");
     }
     
 }
@@ -294,50 +294,66 @@ function determinarEstadoDeLosProblemas() {
         problemasElegidos[numeroDeProblema].estado = "incorrecto"
     }
 }
+            //SECCION TIEMPO***
+correrTiempo("general");
 
-
-function correrTiempo() {
+function correrTiempo(grado) {
+ 
+   if(grado=="normal"){
     clearInterval(idTiempo)
-
-    idTiempo = setInterval(cargarSegundo, 1000)
-
-    // clearInterval(idTiempoGeneral)
-    // idTiempoGeneral = setInterval(function(){tiempo(minutosGeneral, segundosGeneral, minHtmlGeneral, segHtmlGeneral)}, 1000)
+    
+    idTiempo = setInterval(cargarSegundo, 1000);
+    
+    }
+if (grado=="general"){
+    
+    idTiempoGeneral = setInterval(function(){cargarSegundo("general");},1000)}
 }
 
-function cargarSegundo() {
-    if (!(minutos == 0 && segundos == 0)) {
+function cargarSegundo(grado="normal") {
+   let minutos,segundos
+    if(grado=="general"){minutos=minutosGeneral,segundos=segundosGeneral}//si se llama desde general
+   else{minutos=minutosParcial,segundos=segundosParcial}
+    if (!(minutos == 0 && segundos == 0)) { //minutos y segundos no son 0000
         let txtSegundos
-
-        if(segundos < 0) {
+       
+        if(segundos < 0) {  //pasar al siguiente minuto
             segundos = 59
-
+            
         }
     
-        if(segundos < 10) {
+        if(segundos < 10) {  //tiempo menor a 10
             txtSegundos = `0${segundos}` ;
-          
+         
            
         } else {
             
             txtSegundos = segundos
         }
-        
+        if(grado=="general"){
+            segHtmlGeneral.innerHTML = txtSegundos  //establecer los seg en el contador
+            segundos-- ;segundosGeneral--;if(segundosGeneral<0 && minutosGeneral!=0){segundosGeneral=59};
+            cargarMinutos(segundos,minutos,"general");//
+            
+        }else{
+            
         segHtml.innerHTML = txtSegundos
-        segundos--
-        cargarMinutos(segundos)
+        segundos--;segundosParcial--;if(segundosParcial<0 && minutosParcial!=0){segundosParcial=59};
+       
+        cargarMinutos(segundos,minutos)}
     } else {
-
-            segHtml.innerHTML = "00"
+           document.getElementsByClassName("time")[0].style.backgroundColor = "red";
+           segHtml.innerHTML = "00"
+           
     }
 }
 
-function cargarMinutos(segundos){
+function cargarMinutos(segundos,minutos,grado="normal"){
     let txtMinutos 
-
-    if (segundos == -1 && minutos != 0) {
+    
+    if (segundos == -1 && minutos != 0) {  
         setTimeout(()=> {
-            minutos-- 
+            minutos-- ;if(grado=="general"){minutosGeneral--;}else{minutosParcial--}
         }, 100) 
     }
 
@@ -346,10 +362,20 @@ function cargarMinutos(segundos){
     } else {
         txtMinutos = minutos
     }
-    if(minutos==0){if( segundos == 0){document.getElementsByClassName("time")[0].style.backgroundColor = "red"}}
-    
-    minHtml.innerHTML = txtMinutos
+    if (grado =="general"){minHtmlGeneral.innerHTML = txtMinutos}
+   else{minHtml.innerHTML = txtMinutos;}
+   
 }
+function regularizarTiempo() {
+    if(segundosGeneral >= 60) {
+        while(segundosGeneral >= 60) {
+          segundosGeneral = segundosGeneral - 60
+          minutosGeneral += 1
+        }
+    }
+}
+
+      // SECCION PREGUNTAS****
 
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
@@ -371,11 +397,3 @@ function contadorDeCorrectasIncorrectas() {
         }
 }
 
-function regularizarTiempo() {
-    if(segundosGeneral >= 60) {
-        while(segundosGeneral >= 60) {
-          segundosGeneral = segundosGeneral - 60
-          minutosGeneral += 1
-        }
-    }
-}
