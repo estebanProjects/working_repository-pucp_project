@@ -231,6 +231,18 @@ a {
         font-size: 2.5rem;
         border-radius: 3.7px;
     }
+
+    .contenedorletras img {
+        max-width: 28em;
+        min-height: 355px;
+        width: 28em;
+    }
+
+    .contenedorciencias img {
+        max-width: 395px;
+        min-height: 355px;
+    }
+
     .correccion-letras {                /*correccion*/
     top: 0.2em;
     min-width: 10em;

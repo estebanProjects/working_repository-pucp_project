@@ -140,11 +140,11 @@ function siguienteF() {
         if(problemasElegidos.length != numeroDeProblema) {
             let imgProblema = problemasElegidos[numeroDeProblema].imgProblema;
             if(tipo=='ciencias'){
-            space.innerHTML = "<img class='imgsize' src='" + imgProblema + "' style='max-width: 395px;min-height: 355px; '>"  
+            space.innerHTML = "<div class='contenedorciencias'><img class='imgsize' src='" + imgProblema + "></div>"  
             minutos = 2
             segundos = 0
             }if(tipo=='letras'){
-               space.innerHTML = "<div class='contenedorletras'><img class='imgsize' src='" + imgProblema + "' style='max-width: 28em;min-height: 355px;width:28em;'></div>"  
+               space.innerHTML = "<div class='contenedorletras'><img class='imgsize' src='" + imgProblema + "></div>"  
                minutos = 0
                segundos = 30
             }
