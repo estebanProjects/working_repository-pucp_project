@@ -6,18 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
 
-    <%- include('partials/head.html') %>
+    <%- include('../partials/head.html') %>
     
 </head>
 <body>
 
-    <%- include('partials/estructura-principal-letras.html') %>
+    <%- include('../partials/estructura-principal-letras.html') %>
     
-    <%- include('partials/linkcss-problemas.html') %>
     <script>
         let tipo = 'letras'
         let materia = 'redaccion'
     </script>
-    <%- include('partials/link-app.html') %>
+    <%- include('../partials/linkcss.html') %>
+    <%- include('../partials/linkProblemas/linkProblemasRedaccion.html') %>
+    <%- include('../partials/link-app.html') %>
 </body>
 </html>

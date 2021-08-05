@@ -210,13 +210,23 @@ a {
         height: 220px;
     }
 
-    .imgsize {
+    .tamañoDeLaImagenDelProblema{
         max-width: 395px;
         min-height: 355px;  
         
         border-radius: 2.5px;
         
-    } .contenedorletras::-webkit-scrollbar{background:rgba(26, 25, 25, 0.226);border-radius: 5px;}
+    }
+
+    .tamañoDeLaImagenDeLaSolucion{
+        max-width: 240px;
+        min-height: 240px;
+
+        border-radius: 1.85px;
+        
+    }
+    
+    .contenedorletras::-webkit-scrollbar{background:rgba(26, 25, 25, 0.226);border-radius: 5px;}
     .contenedorletras{overflow-y: scroll;max-height: 23em;}
     .correccion {
         width: 250px;
@@ -266,21 +276,21 @@ a {
 .resp4{right:2.18em;position: relative;top:4.1em;}
 #palabraCorreccion-letras{position: relative;left:3.5em;padding:4px}
 
-    .god {
+    .respuestaCorrecta {
         padding: 5px 12px;
         background-color: chartreuse;
         margin-bottom: 20px;
         border-radius: 2px;
     }
 
-    .bad {
+    .respuestaIncorrecta {
         padding: 5px 12px;
         background-color: red;
         margin-bottom: 20px;
         border-radius: 2px;
     }
 
-    .showResolution {
+    #mostrarSolucion {
         padding: 4px 10px;
         background-color: cyan;
         border-radius: 5px;
@@ -288,6 +298,22 @@ a {
     }
 
 /* Botons */
+
+.botones_parte_de_abajo {
+    display: flex;
+    align-items: center;
+}
+
+.botones_parte_de_abajo .b {
+    border: none; 
+    background-color: white;
+    cursor: pointer;
+}
+
+.botones_parte_de_abajo i {
+    font-size: 30px;
+    margin: 15px;
+}
 
 .botons {
     width: 300px;
@@ -317,14 +343,28 @@ a {
 
 .botons .cont-inp-comp {
     display: none;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
 
+.botons .radio {
+    display: flex;
+    font-size: 16.5px;
+    font-weight: bold;
+    cursor: pointer;
+
+    position: relative;
+    bottom: 5px;
 }
 
 .botons .input {
     padding: 5px;
     width: 100px;
+}
+
+.botons .radio div {
+    margin-left: 14px;
 }
 
 .botons .comprobar {
@@ -336,23 +376,6 @@ a {
 
     cursor: pointer;
 }
-
-/* flecha izquierda */
-.fa-chevron-left {
-    display: none;
-    font-size: 40px;
-
-    cursor: pointer;
-}
-
-/* flecha derecha*/
-.fa-chevron-right {
-    display: none;
-    font-size: 40px;
-
-    cursor: pointer;
-}
-
 
 .fa-check-circle {
     color: rgb(43, 224, 43);
