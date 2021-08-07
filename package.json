@@ -1,5 +1,5 @@
 {
-  "name": "proyecto-pucp-origin",
+  "name": "proyecto_pucp_nodejs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -16,6 +16,6 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.9"
   }
 }

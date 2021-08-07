@@ -5,31 +5,28 @@ router.get('/', (req, res) => {
     res.render('index.html', {title: 'Preguntas Pucp'});
 });
 
-// Ciencias
 router.get('/aritmetica', (req, res) => {
-    res.render('ciencias/aritmetica.html', {title: 'Aritmetica'});    
+    res.render('../views/ciencias/aritmetica.html', {title: 'Preguntas Aritmetica'});    
 });
 
 router.get('/algebra', (req, res) => {
-    res.render('ciencias/algebra.html', {title: 'Algebra'});    
+    res.render('../views/ciencias/algebra.html', {title: 'Preguntas Algebra'});    
 });
 
 router.get('/geometria', (req, res) => {
-    res.render('ciencias/geometria.html', {title: 'Geometria'});    
+    res.render('../views/ciencias/geometria.html', {title: 'Preguntas Geometria'});    
 });
 
 router.get('/matematica', (req, res) => {
-    res.render('ciencias/matematica.html', {title: 'Matematica'});    
+    res.render('../views/ciencias/matematica.html', {title: 'Preguntas Matematica'});    
 });
 
-// Letras
 router.get('/redaccion', (req, res) => {
-    res.render('letras/redaccion.html', {title: 'Redaccion'});    
+    res.render('../views/letras/redaccion.html', {title: 'Preguntas Redaccion'});    
 });
 
 router.get('/lectura', (req, res) => {
-    res.render('letras/lectura.html', {title: 'Lectura'});    
+    res.render('../views/letras/lectura.html', {title: 'Preguntas Lectura'});    
 });
-
 
 module.exports = router;

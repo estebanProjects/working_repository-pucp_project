@@ -1,222 +1,209 @@
+// variables principales - obtenidas desde el HTML
+let botonEmpezar = document.getElementById('empezar')
+let boxDeAlternativasYComprobar = document.getElementById('boxDeAlternativasYComprobar')
+let botonSiguiente = document.getElementById('siguiente')
+let botonRetroceder = document.getElementById('retroceder')
+let botonComprobar = document.getElementById('comprobar')
+let botonMostrarSolucion = document.getElementById('mostrarSolucion') // se crea en la funcion comprobar
+let espacioParaSolucion = document.getElementById('espacioParaSolucion')
+let espacioParaProblemas = document.getElementById('espacioParaProblemas')
+let espacioParaCorreccion = document.getElementById('espacioParaCorreccion')
+let radioButtons = document.getElementById('radioButtons')
+let alternativas = document.getElementsByName('alternativa')
 
-let empezar = document.getElementById('empezar')
-let cont_inp_comp = document.getElementById('cont-inp-comp')
-let siguiente = document.getElementById('siguiente')
-let comprobar = document.getElementById('comprobar')
-let space = document.getElementById('spaceForProblems')
-let input = document.getElementById('input')
-let spaceResolution = document.getElementById('spaceForResolution')
-let correccion = document.getElementById('correcion')
-let minHtml = document.getElementById('minutos')
-let segHtml = document.getElementById('segundos')
-let time = document.getElementById('time')
+// variables del tiempo - propio del Javascript
+let idTiempoParticular
+let idTiempoGeneral
 
-let number
-
-let minutos = 2
-let segundos = 0
-
-let idTiempo
-
-let apretado = false
-let apretSolucion = false
-let once = false
-
-let showResolution1
-let godOrBad
-
+// variables internas - propio del Javascript
+let problemasElegidos = arrayProblemasPucp
+let numeroDelProblemaActual = 0
 let rpta
+let mostrarSolucion
+let soloUnaVezDelContadorFinal = true // solo se ejecutará una vez la funcion de contador de correctas e incorrectas 
 
-let problemasElegidos
-
-
-if(materia != 'matematica') {
-    problemasElegidos = arrayProblemasPucp_Ciencias.filter(problema => problema.curso == materia)
-} else if(materia == 'matematica') {
-    problemasElegidos = arrayProblemasPucp_Ciencias  
-}
-
-console.log(problemasElegidos)
-
-let lenghtInicial = problemasElegidos.length
-
-empezar.addEventListener('click', empezarF)
-siguiente.addEventListener('click', siguienteF)
-comprobar.addEventListener('click', comprobarF)
-
-// boton empezar
-function empezarF() {
-    empezar.style.display = 'none'
-    cont_inp_comp.style.display = 'flex'
-    siguiente.style.display = 'inline'
-
-    siguienteF()
-}
-
-let cont = 0
-
-let buenas = 0
-let malas = 0
+// variables del contador de correctas e incorrectas
+let correctas = 0
+let incorrectas = 0
 let blanco = 0
 
-function siguienteF() {
-    if(problemasElegidos.length > 0) {
+// escuchadores de eventos
+botonEmpezar.addEventListener('click', empezar)
+botonRetroceder.addEventListener('click', retroceder)
+botonSiguiente.addEventListener('click', siguiente)
+botonComprobar.addEventListener('click', comprobar)
 
-        comprobar.style.display = 'inline'
+// Botones
+// boton empezar
+function empezar() {
+    // comenzar el cronometro general
+    correrTiempo("general")
+    // acomodando los botones
+    botonEmpezar.style.display = 'none'
+    boxDeAlternativasYComprobar.style.display = 'flex'
+    siguiente()
+}
 
-        if((apretado == false || apretSolucion == false) && once == true) {
-            rpta = input.value.toLowerCase().trim()
-            console.log(problemasElegidos[number].respuesta)
-            acumulacionBuenasMalasBlanco()
 
-            problemasElegidos.splice(number, 1)
-            cont++
-        } else {
-            once = true
-        }
-    
-        apretado = false
-        apretSolucion = false
-        input.disabled = false
-        
-        number = randomNumber(0, problemasElegidos.length)
+function siguiente() {
+    obtenerDatosDelProblema()
+    numeroDelProblemaActual++ // aumentar en 1 el valor de esta variable para que pueda pasar a la siguiente pregunta
+    if(problemasElegidos.length > numeroDelProblemaActual) { // se va ejecutar si la "cantidad de problemas" es mayor al problema actual
+        estadoHabilitadoODeshabilitadoRadioButtons()
+        renderizarImagenDelProblema()
+        desmarcarAlternativas()
+        mostrarAlternativaGuardadaDelUsuario()
+        botonComprobar.disabled = false // habilitar el boton comprobar
 
-        if(cont < lenghtInicial) {
-            let imgProblema = problemasElegidos[number].imgProblema
-            space.innerHTML = "<img class='imgsize' src='" + imgProblema + "'>"  
-
-            minutos = 2
-            segundos = 0
-            correrTiempo()
-
-        } else {
-            time.innerHTML = "¡Terminaste!"
-            input.disabled = true
-            comprobar.style.display = 'none'
-
-            space.innerHTML = "<p>Tuviste <strong>" + buenas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + malas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco + "</strong> en blanco <i class='fas fa-circle'></i></p>"
-            clearInterval(idTiempo)
-        }
-        
-        
-        input.value = ""
-        correccion.innerHTML = "Corrección"
-        spaceResolution.innerHTML = "Solución"
-
-    
+        minutosParticular = cantidadMinutosParticular
+        segundosParticular = cantidadSegundosParticular
+        correrTiempo("particular") // reiniciar el cronometro particular
     } else {
-        time.innerHTML = "¡Terminaste!"
-        input.disabled = true
-        comprobar.style.display = 'none'
+        console.log("¡Terminaste!")
+        contadorDeCorrectasIncorrectas(soloUnaVezDelContadorFinal) // esta funcion se ejecutará solo una vez
+        // deshabilitar los botones de avanzar, retroceder y de comprobar
+        botonRetroceder.disabled = true
+        botonSiguiente.disabled = true
+        botonComprobar.disabled = true
+        // muestra en pantalla el reporte de correctas e incorrectas que se tuvo
+        espacioParaProblemas.innerHTML = "<p>Tuviste <strong>" + correctas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + incorrectas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco + "</strong> en blanco <i class='fas fa-circle'></i></p>"
+        clearInterval(idTiempoParticular)
+    }
+    limpiarPantalla()
+}
 
-        space.innerHTML = "<p>Tuviste <strong>" + buenas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + malas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco + "</strong> en blanco <i class='fas fa-circle'></i></p>"
-        clearInterval(idTiempo)
+function retroceder() {
+    if(numeroDelProblemaActual > 1) { // se va ejecutar si el problema actual es el 2 o más
+        obtenerDatosDelProblema()
+        numeroDelProblemaActual-- // disminuir en 1 el valor de esta variable para que pueda retroceder a la anterior pregunta
 
-        correccion.innerHTML = "Corrección"
-        spaceResolution.innerHTML = "Solución"
+        estadoHabilitadoODeshabilitadoRadioButtons()
+        renderizarImagenDelProblema()
+        desmarcarAlternativas()
+        mostrarAlternativaGuardadaDelUsuario()
+        botonComprobar.disabled = false // habilitar el boton comprobar
+
+        minutosParticular = cantidadMinutosParticular
+        segundosParticular = cantidadSegundosParticular
+        correrTiempo("particular") // reiniciar el cronometro particular
+    }
+    limpiarPantalla()
+}
+
+function comprobar() {
+    botonComprobar.disabled = true // deshabilitar el boton comprobar
+    obtenerDatosDelProblema()
+
+    if(problemasElegidos[numeroDelProblemaActual].respuesta == rpta) { // si está correcto
+        espacioParaCorreccion.innerHTML = "<p class='respuestaCorrecta'>¡Correcto!</p>" + "<button id='mostrarSolucion'> Ver solución </button>"
+        activarFuncionMostrarSolucion()
+    } else { // si está incorrecto
+        espacioParaCorreccion.innerHTML = "<p class='respuestaIncorrecta'>¡Incorrecto!</p>" + "<button id='mostrarSolucion'> Ver solución </button>"
+        activarFuncionMostrarSolucion()
     }
 
+    // deshabilitando los radio buttons
+    problemasElegidos[numeroDelProblemaActual].radioButtonDeshabilitado = true 
+    estadoHabilitadoODeshabilitadoRadioButtons()
 
+    clearInterval(idTiempoParticular) // parando el tiempo particular
 }
 
-
-
-function comprobarF() {
-    comprobar.style.display = 'none'
-    rpta = input.value.toLowerCase().trim()
-
-    if(problemasElegidos[number].respuesta == rpta) {
-        correccion.innerHTML = "<p class='god' id='god'>¡Correcto!</p>" + "<a class='showResolution' id='showResolution'> Ver solución </a>"
-        showResolution1 = document.getElementById('showResolution')
-        godOrBad = document.getElementById('god')
-        showResolution1.addEventListener('click', mostrarSolucion)
-    } else {
-        correccion.innerHTML ="<p class='bad' id='bad'>¡Incorrecto!<p>" + "<a class='showResolution' id='showResolution'> Ver resolución </a> "
-        showResolution1 = document.getElementById('showResolution')
-        godOrBad = document.getElementById('bad')
-        showResolution1.addEventListener('click', mostrarSolucion)
-    }
-
-    apretado = true
-    input.disabled = true
-    clearInterval(idTiempo)
+function funcionMostrarSolucion() {
+    let imagenDeLaSolucion = problemasElegidos[numeroDelProblemaActual].imgResolucion // direccion de la imagen de la solucion
+    espacioParaSolucion.innerHTML = "<img class='tamañoDeLaImagenDeLaSolucion' src='" + imagenDeLaSolucion + "'>"
 }
 
-function mostrarSolucion() {
-
-    
-    let imgResolucion = problemasElegidos[number].imgResolucion
-    spaceResolution.innerHTML = "<img class='imgResolutionSize' src='" + imgResolucion + "'>"
-    console.log(problemasElegidos[number].respuesta)
-    acumulacionBuenasMalasBlanco()
-
-    problemasElegidos.splice(number, 1)
-    
-    apretSolucion = true
-    cont++
-
-    showResolution1.style.display = 'none'
-    godOrBad.style.marginBottom = "0"
+// funciones auxiliares
+function renderizarImagenDelProblema() {
+    let imagenDelProblema = problemasElegidos[numeroDelProblemaActual].imgProblema // direccion de la imagen del problema
+    espacioParaProblemas.innerHTML = "<img class='tamañoDeLaImagenDelProblema' src='" + imagenDelProblema + "'>"
 }
 
-function acumulacionBuenasMalasBlanco() {
-    if(problemasElegidos[number].respuesta == rpta) {
-        buenas++
-    } else if(rpta == "") {
-        blanco++
-    } else if(problemasElegidos[number].respuesta != rpta) {
-        malas++
-    }
-}
-
-
-function correrTiempo() {
-    clearInterval(idTiempo)
-    idTiempo = setInterval(cargarSegundo, 1000)
-}
-
-function cargarSegundo() {
-    if (!(minutos == 0 && segundos == 0)) {
-        let txtSegundos
-
-        if(segundos < 0) {
-            segundos = 59
+function obtenerDatosDelProblema() {
+    // if(problemasElegidos.length > numeroDelProblemaActual) {
+        if(numeroDelProblemaActual != 0) { // no se ejecutara si el usuario todavía no ha presionado el boton "empezar"(es decir que el problema actual sea 0)
+            rpta = obtenerValorDeLosRadioButtons()
+            determinarEstadoDelProblema()
+            problemasElegidos[numeroDelProblemaActual].alternativaDelUsuario = rpta // guardando la respuesta que puso el usuario en los radio buttons
         }
-    
-        if(segundos < 10) {
-            txtSegundos = `0${segundos}` 
-        } else {
-            txtSegundos = segundos
+    // }
+}
+
+function obtenerValorDeLosRadioButtons() {
+        for(let i=0; i<alternativas.length; i++) {
+            if(alternativas[i].checked) {
+                var valorDelRadioButtonSeleccionado = alternativas[i].value
+            }
         }
-        
-        segHtml.innerHTML = txtSegundos
-        segundos--
-        cargarMinutos(segundos)
+        return valorDelRadioButtonSeleccionado
+}
+
+function activarFuncionMostrarSolucion() {
+    mostrarSolucion = document.getElementById('mostrarSolucion')
+    mostrarSolucion.addEventListener('click', funcionMostrarSolucion)
+}
+
+function determinarEstadoDelProblema() {
+    console.log(rpta)
+        if(problemasElegidos[numeroDelProblemaActual].respuesta == rpta) {
+            problemasElegidos[numeroDelProblemaActual].estado = "correcto"
+    
+        } else if(rpta == undefined) { // si el usuario no puso ni una alternativa
+            problemasElegidos[numeroDelProblemaActual].estado = "blanco"
+    
+        } else if(problemasElegidos[numeroDelProblemaActual].respuesta != rpta) {
+            problemasElegidos[numeroDelProblemaActual].estado = "incorrecto"
+        }
+}
+
+function mostrarAlternativaGuardadaDelUsuario() {
+    for(let i=0; i<alternativas.length; i++) {
+        if(alternativas[i].value == problemasElegidos[numeroDelProblemaActual].alternativaDelUsuario) {
+            alternativas[i].checked = true
+        }
+    }
+}
+
+function desmarcarAlternativas() {
+    for(let i=0; i<alternativas.length; i++) {
+        if(alternativas[i].checked) {
+            alternativas[i].checked = false
+        }
+    }
+}
+
+function estadoHabilitadoODeshabilitadoRadioButtons() {
+    if(problemasElegidos[numeroDelProblemaActual].radioButtonDeshabilitado == true) {
+        for(let i=0; i<alternativas.length; i++) {
+            alternativas[i].disabled = true
+        }
     } else {
-
-            segHtml.innerHTML = "00"
+        for(let i=0; i<alternativas.length; i++) {
+            alternativas[i].disabled = false
+        }
     }
 }
 
-function cargarMinutos(segundos){
-    let txtMinutos 
-
-    if (segundos == -1 && minutos != 0) {
-        setTimeout(()=> {
-            minutos-- 
-        }, 100) 
+function contadorDeCorrectasIncorrectas(valor) {
+    if(valor == true) {
+        for(let i=0; i < problemasElegidos.length; i++){
+            if(problemasElegidos[i].estado == "correcto"){
+                correctas++
+            } else if(problemasElegidos[i].estado == "blanco"){
+                blanco++
+            } else if(problemasElegidos[i].estado == "incorrecto"){
+                incorrectas++
+            }
+        }
+        soloUnaVezDelContadorFinal = false
     }
-
-    if(minutos < 10) {
-        txtMinutos = `0${minutos}`
-        // txtMinutos = "0" + minutos
-    } else {
-        txtMinutos = minutos
-    }
-
-    minHtml.innerHTML = txtMinutos
 }
 
-function randomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min) + min);
+function limpiarPantalla() {
+    espacioParaCorreccion.innerHTML = "Corrección"
+    espacioParaSolucion.innerHTML = "Solución"
 }
+
+
+
