@@ -111,13 +111,14 @@ function comprobar() {
 
 function funcionMostrarSolucion() {
     let imagenDeLaSolucion = problemasElegidos[numeroDelProblemaActual].imgResolucion // direccion de la imagen de la solucion
-    espacioParaSolucion.innerHTML = "<img class='tamañoDeLaImagenDeLaSolucion' src='" + imagenDeLaSolucion + "'>"
-}
+    espacioParaSolucion.innerHTML = "<img class='tamañoDeLaImagenDeLaSolucion"+tipo+"' src='" + imagenDeLaSolucion + "'>"
+} //"<img class="+`tamañoDeLaImagenDelProblema${tipo}"` +"\"src='" + imagenDeLaSolucion + "'>"
 
 // funciones auxiliares
 function renderizarImagenDelProblema() {
     let imagenDelProblema = problemasElegidos[numeroDelProblemaActual].imgProblema // direccion de la imagen del problema
-    espacioParaProblemas.innerHTML = "<img class='tamañoDeLaImagenDelProblema' src='" + imagenDelProblema + "'>"
+    
+    espacioParaProblemas.innerHTML = "<img class='tamañoDeLaImagenDelProblema"+tipo+"' src='" + imagenDelProblema + "'>"
 }
 
 function obtenerDatosDelProblema() {

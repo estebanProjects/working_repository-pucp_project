@@ -12,26 +12,27 @@
     </div>
 
     <main class="PrincipalForSpaces">
-        <div class="spaceForProblems-letras" id="spaceForProblems" >    
+        <div class="spaceForProblems-letras" id="spaceForProblems" >          <!--espacio para los problemas,va primero para cambiar el diseño-->
             <div class="spaceForProblems2-letras" id="spaceForProblems2">
                 <h2>¡Vamos futuro cachimbo!</h2>
                 <img class="logo-pucp" src="./logo/logo-pucp.png" alt="">
             </div>    
         </div>
-        <!--espacio para las resoluciones--><div class="solucionproblema" >
-
+        <!--espacio para las resoluciones,van arriba--><div class="solucionproblema" >
+         
         <div class="spaceForResolution-letras" id="spaceForResolution">
             <p id="palabraSolucion" >-Solución-</p>
         </div>
 
     
-
+      <!--Alternativas,van abajo-->
         <div class="correccion-letras" id="correcion">
-           <div class="resp1"><input class="input" id="res1" type="radio"  name="response" value="a"><b>A</b></div>
-           <div class="resp2"><input class="input" id="res2" type="radio"  name="response" value="b"><b>B</b></div>
-           <div class="resp3"> <input class="input" id="res3" type="radio"  name="response" value="c"><b>C</b></div>
-           <div class="resp4"><input class="input" id="res4" type="radio"  name="response" value="d"><b>D</b></div>
+           <div class="resp1"><input type="radio" name="alternativa" id="A" value="a"><b><label for="A">A</label></b></div>
+           <div class="resp2"><input type="radio" name="alternativa" id="B" value="b"><b><label for="B">B</label></b></div>
+           <div class="resp3"><input type="radio" name="alternativa" id="C" value="c"><b><label for="C">C</label></b></div>
+           <div class="resp4"><input type="radio" name="alternativa" id="D" value="d"><b><label for="D">D</label></b></div>
             
+           <!--aca esta la palabra del div-->
             <p id="palabraCorreccion-letras">-Corrección/<br>/alternativas-</p>
         </div>
 
@@ -40,13 +41,16 @@
     </main>
 
 
-    <section class="botons">
-        <a class="empezar" id="empezar">Empezar</a>
+    <div class="botones_parte_de_abajo">  <!--botones de la parte de abajo,cuadro verde -->
+      <button class="b" id="retroceder"><i class="fas fa-chevron-left"></i></button>
+          <section class="botons">
+             <a class="empezar" id="empezar">Empezar</a>
         
-        <div class="cont-inp-comp" id="cont-inp-comp">
-            <a class="comprobar" id="comprobar">Comprobar</a>
-        </div>
-        <a class="siguiente" id="siguiente">Siguiente</a>
+              <div class="cont-inp-comp" id="cont-inp-comp">
+                <a class="comprobar" id="comprobar">Comprobar</a>
+              </div>
+          </section>
+          <button class="b" id="siguiente"><i class="fas fa-chevron-right"></i></button>
     </section>
 
 </div>
