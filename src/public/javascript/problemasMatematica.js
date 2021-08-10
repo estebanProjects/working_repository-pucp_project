@@ -4,15 +4,15 @@ let arrayProblemasPucp = [{ // ARITMETICA
     respuesta: "d",
     alternativaDelUsuario: "",
     estado: "", // correcto o incorrecto
-    inputDeshabilitado: false,
-    imgResolucion: "https://www.dl.dropboxusercontent.com/s/lu0zdvbtqst45ci/arit_resolucion1.png?dl=0",
+    radioButtonDeshabilitado: false,
+    imgResolucion: "https://www.dl.dropboxusercontent.com/s/g56q75zuw78mr5p/arit_resolucion1.jpg?dl=0",
     curso: 'aritmetica'
 },{
     imgProblema: "https://www.dl.dropboxusercontent.com/s/v8tognxxdpcocxw/arit_problema2.jpg?dl=0",
     respuesta: "c",
     alternativaDelUsuario: "",
     estado: "",
-    inputDeshabilitado: false,
+    radioButtonDeshabilitado: false,
     imgResolucion: "https://www.dl.dropboxusercontent.com/s/w0i2sy619msy9yd/arit_resolucion2.jpg?dl=0",
     curso: 'aritmetica'
 },{
@@ -20,7 +20,7 @@ let arrayProblemasPucp = [{ // ARITMETICA
     respuesta: "c",
     alternativaDelUsuario: "",
     estado: "",
-    inputDeshabilitado: false,
+    radioButtonDeshabilitado: false,
     imgResolucion: "https://www.dl.dropboxusercontent.com/s/1zcbxmii9qn3pus/arit_resolucion3.jpg?dl=0",
     curso: 'aritmetica'
 },{ // ALGEBRA
@@ -28,7 +28,7 @@ let arrayProblemasPucp = [{ // ARITMETICA
     respuesta: "d",
     alternativaDelUsuario: "",
     estado: "",
-    inputDeshabilitado: false,
+    radioButtonDeshabilitado: false,
     imgResolucion: "https://www.dl.dropboxusercontent.com/s/2bov25z4t3eh98q/alg_resolucion1.jpg?dl=0",
     curso: 'algebra'
 },{
@@ -36,7 +36,7 @@ let arrayProblemasPucp = [{ // ARITMETICA
     respuesta: "b",
     alternativaDelUsuario: "",
     estado: "",
-    inputDeshabilitado: false,
+    radioButtonDeshabilitado: false,
     imgResolucion: "https://www.dl.dropboxusercontent.com/s/vf5uq6mxl1swzb9/alg_resolucion2.jpg?dl=0",
     curso: 'algebra'
 },{
@@ -44,7 +44,7 @@ let arrayProblemasPucp = [{ // ARITMETICA
     respuesta: "b",
     alternativaDelUsuario: "",
     estado: "",
-    inputDeshabilitado: false,
+    radioButtonDeshabilitado: false,
     imgResolucion: "https://www.dl.dropboxusercontent.com/s/ri7q8h0omsxfje1/alg_resolucion3.jpg?dl=0",
     curso: 'algebra'
 },{ // GEOMETRIA
@@ -52,7 +52,7 @@ let arrayProblemasPucp = [{ // ARITMETICA
     respuesta: "d",
     alternativaDelUsuario: "",
     estado: "",
-    inputDeshabilitado: false,
+    radioButtonDeshabilitado: false,
     imgResolucion: "https://www.dl.dropboxusercontent.com/s/ependyb6pn68a1s/geo_resolucion1.jpg?dl=0",
     curso: 'geometria'
 },{
@@ -60,7 +60,7 @@ let arrayProblemasPucp = [{ // ARITMETICA
     respuesta: "a",
     alternativaDelUsuario: "",
     estado: "",
-    inputDeshabilitado: false,
+    radioButtonDeshabilitado: false,
     imgResolucion: "https://www.dl.dropboxusercontent.com/s/rh2lyk9dopp5pd2/geo_resolucion2.jpg?dl=0",
     curso: 'geometria'
 },{
@@ -68,56 +68,38 @@ let arrayProblemasPucp = [{ // ARITMETICA
     respuesta: "a",
     alternativaDelUsuario: "",
     estado: "",
-    inputDeshabilitado: false,
+    radioButtonDeshabilitado: false,
     imgResolucion: "https://www.dl.dropboxusercontent.com/s/vv1kc4kuaa5b540/geo_resolucion3.jpg?dl=0",
     curso: 'geometria'
 }
 ]
 
-// Redaccion
 
-let arrayProblemasPucp_redaccion = [{
-    imgProblema: "imagen_del_problema1",
-    respuesta: "r",
-    imgResolucion: "imagen_de_la_solucion1"
-},{
-    imgProblema: "imagen_del_problema2",
-    respuesta: "r",
-    imgResolucion: "imagen_de_la_solucion2"
-}]
+if(materia == 'aritmetica' || materia == 'algebra' || materia == 'geometria') {
+    arrayProblemasPucp = arrayProblemasPucp.filter(problema => problema.curso == materia)
+    mezclarArray(arrayProblemasPucp)
+    agregandoElElementoNeutro()
+} else if(materia == 'matematica'){
+    mezclarArray(arrayProblemasPucp)
+    agregandoElElementoNeutro()
+}
 
-// Lectura
+// variable del tiempo para matematica
+let cantidadMinutosParticular = 2
+let cantidadSegundosParticular = 0
+let minutosParticular = cantidadMinutosParticular
+let segundosParticular = cantidadSegundosParticular
+let minutosGeneral = arrayProblemasPucp.length*2
+let segundosGeneral = 0
 
-let arrayProblemasPucp_lectura = []
+// funciones
+function mezclarArray(inputArray){ // funcion para aleatorizar los problemas
+    inputArray.sort(()=> Math.random() - 0.5);
+}
 
-let textoA = [{
-    imgProblema: "imagen_del_problema1",
-    respuesta: "r",
-    imgResolucion: "imagen_de_la_solucion1"
-},{
-    imgProblema: "imagen_del_problema2",
-    respuesta: "r",
-    imgResolucion: "imagen_de_la_solucion2"
-}]
-
-let textoB = [{
-    imgProblema: "imagen_del_problema1",
-    respuesta: "r",
-    imgResolucion: "imagen_de_la_solucion1"
-}]
-
-let textoC = [{
-    imgProblema: "imagen_del_problema1",
-    respuesta: "r",
-    imgResolucion: "imagen_de_la_solucion1"
-},{
-    imgProblema: "imagen_del_problema2",
-    respuesta: "r",
-    imgResolucion: "imagen_de_la_solucion2"
-},{
-    imgProblema: "imagen_del_problema3",
-    respuesta: "r",
-    imgResolucion: "imagen_de_la_solucion3"
-}]
-
-let problemas_lectura = [textoA, textoB, textoC]
+function agregandoElElementoNeutro() {
+    arrayProblemasPucp.unshift({  // agregando un elemento con atributos neutro al inicio del array
+        respuesta: "neutro",
+        estado: "neutro",
+        alternativaDelUsuario: "neutro",})
+}
