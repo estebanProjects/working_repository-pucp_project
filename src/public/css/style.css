@@ -144,15 +144,15 @@ a {
     top: 0.2em;
     min-width: 10em;
     max-height: 13.1em;
-    height: 20em;
+    height: 8em;
     width: 22.6em;
     background-color: rgba(117, 204, 95, 0.5);
     border:1px solid rgba(40, 168, 40, 0.336);
     position: relative;
     right:1em;
     display: flex;
-    
-   justify-content: right;
+    flex-direction: column;
+   justify-content: center;
     align-items:center;
     
     font-size: 2.5rem;
@@ -162,7 +162,7 @@ a {
     
     max-width: 22.6em;
     max-height: 25em;
-    height: 3em;
+    height: 8em;
     width: 25em;
     background-color: rgba(117, 204, 95, 0.5);
     border:1px solid rgba(40, 168, 40, 0.336);
@@ -180,6 +180,7 @@ a {
 
 }
 .spaceForProblems-letras {   /*problemas de letras,el contenedor que le da el borde verde*/
+    overflow: auto;
     min-width: 1em;
      max-height:21em;
      height: 30em;
@@ -191,14 +192,21 @@ a {
  
      display: flex;
      flex-direction: column;
-     justify-content: center;
+     /* justify-content: center; */
      align-items: center;
  
      border-radius: 5px;
      font-size: 2rem;
  
      padding: 5px;
+     
  }
+
+ .spaceForProblems-letras p {
+     position: relative;
+     top: 155px;
+ }
+
  .spaceForProblems2-letras{ /*el contenedor del logotipo de la pucp que aparece al empezar,de letras*/
     min-width: 365px;
     min-height: 365px;
@@ -206,7 +214,7 @@ a {
     height:20em ;
     width: 30em;
     position: relative;
-
+    top: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -219,7 +227,8 @@ a {
     
 
 }
-#palabraCorreccion-letras{position: relative;left:3.5em;padding:4px} /* este para mover la palabra "correccion/solucion" dentro del div de las claves*/
+/* este para mover la palabra "correccion/solucion" dentro del div de las claves*/
+/* #palabraCorreccion-letras{position: relative;left:3.5em;padding:4px}  */
 
 .contenedorletras::-webkit-scrollbar{background:rgba(26, 25, 25, 0.226);border-radius: 5px;}
 .contenedorletras{overflow-y: scroll;max-height: 23em;} /*este contenedor es de las imagenes de los problemas */
@@ -231,19 +240,14 @@ a {
 
 
 .tamañoDeLaImagenDelProblemaletras{ /*esto es la clase que se crea en renderizarproblemas() en app.js,la imagen del problema cargado pero de letras*/
-    max-width: 28em;
-    min-height: 355px;  
-    width: 28em;
+
     border-radius: 2.5px;
-    
 }
 
 .tamañoDeLaImagenDeLaSolucionletras{ /* esta igual,pero tienes que ajustar los tamaños para que quepa en el contenedor*/
-    max-width: 240px;
-    min-height: 240px;
+    
 
     border-radius: 1.85px;
-    
 }
 
 

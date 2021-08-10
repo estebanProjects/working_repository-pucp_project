@@ -3,33 +3,57 @@
 let arrayProblemasPucp = []
 
 let textoA = [{
-    imgProblema: "imagen_del_problema1",
-    respuesta: "r",
-    imgResolucion: "imagen_de_la_solucion1"
+    imgProblema: "https://www.dl.dropboxusercontent.com/s/b7ygc458c6ocvvl/lectura1.PNG?dl=0",
+    respuesta: "d",
+    alternativaDelUsuario: "",
+    estado: "", // correcto o incorrecto
+    radioButtonDeshabilitado: false,
+    imgResolucion: "https://www.dl.dropboxusercontent.com/s/2mwlspe5pha9gg9/rel1.PNG?dl=0",
+    curso: 'lectura'
 },{
-    imgProblema: "imagen_del_problema2",
-    respuesta: "r",
-    imgResolucion: "imagen_de_la_solucion2"
+    imgProblema: "https://www.dl.dropboxusercontent.com/s/gbp6gcyhgnsbxmq/proble2.PNG?dl=0",
+    respuesta: "c",
+    alternativaDelUsuario: "",
+    estado: "",
+    radioButtonDeshabilitado: false,
+    imgResolucion: "https://www.dl.dropboxusercontent.com/s/egytud48r7tjizu/rel2.PNG?dl=0",
+    curso: 'lectura'
 }]
 
 let textoB = [{
-    imgProblema: "imagen_del_problema1",
+    imgProblema: "https://www.dl.dropboxusercontent.com/s/x8dckzie5c6czyk/lectura2.PNG?dl=0",
     respuesta: "r",
-    imgResolucion: "imagen_de_la_solucion1"
+    alternativaDelUsuario: "",
+    estado: "", // correcto o incorrecto
+    radioButtonDeshabilitado: false,
+    imgResolucion: "https://www.dl.dropboxusercontent.com/s/2mwlspe5pha9gg9/rel1.PNG?dl=0",
+    curso: 'lectura'
 }]
 
 let textoC = [{
-    imgProblema: "imagen_del_problema1",
+    imgProblema: "https://www.dl.dropboxusercontent.com/s/k6zwvt6jkg1o9ud/lectura3.png?dl=0",
     respuesta: "r",
-    imgResolucion: "imagen_de_la_solucion1"
+    alternativaDelUsuario: "",
+    estado: "", // correcto o incorrecto
+    radioButtonDeshabilitado: false,
+    imgResolucion: "https://www.dl.dropboxusercontent.com/s/2mwlspe5pha9gg9/rel1.PNG?dl=0",
+    curso: 'lectura'
 },{
-    imgProblema: "imagen_del_problema2",
+    imgProblema: "https://www.dl.dropboxusercontent.com/s/k6zwvt6jkg1o9ud/lectura3.png?dl=0",
     respuesta: "r",
-    imgResolucion: "imagen_de_la_solucion2"
+    alternativaDelUsuario: "",
+    estado: "", // correcto o incorrecto
+    radioButtonDeshabilitado: false,
+    imgResolucion: "https://www.dl.dropboxusercontent.com/s/2mwlspe5pha9gg9/rel1.PNG?dl=0",
+    curso: 'lectura'
 },{
-    imgProblema: "imagen_del_problema3",
+    imgProblema: "https://www.dl.dropboxusercontent.com/s/k6zwvt6jkg1o9ud/lectura3.png?dl=0",
     respuesta: "r",
-    imgResolucion: "imagen_de_la_solucion3"
+    alternativaDelUsuario: "",
+    estado: "", // correcto o incorrecto
+    radioButtonDeshabilitado: false,
+    imgResolucion: "https://www.dl.dropboxusercontent.com/s/2mwlspe5pha9gg9/rel1.PNG?dl=0",
+    curso: 'lectura'
 }]
 
 let problemas_lectura = [textoA, textoB, textoC]
@@ -38,20 +62,20 @@ mezclarArray(problemas_lectura)
 
 for(let i=0; i < problemas_lectura.length; i++) { // pone todos los problemas de lectura en un array
     for(let j=0; j < problemas_lectura[i].length; j++) {
-        arrayProblemasPucp_lectura.push(problemas_lectura[i][j])
+        arrayProblemasPucp.push(problemas_lectura[i][j])
     }
 }
 
-agregandoElElementoNeutro()
 
 // variable del tiempo para lectura
 let cantidadMinutosParticular = 0
-let cantidadSegundosParticular = 30
+let cantidadSegundosParticular = 45
 let minutosParticular = cantidadMinutosParticular
 let segundosParticular = cantidadSegundosParticular
 let minutosGeneral = 0
-let segundosGeneral = arrayProblemasPucp.length*30
+let segundosGeneral = arrayProblemasPucp.length*cantidadSegundosParticular
 regularizarTiempo()
+agregandoElElementoNeutro()
 
 // funciones
 function mezclarArray(inputArray){ // funcion para aleatorizar los problemas

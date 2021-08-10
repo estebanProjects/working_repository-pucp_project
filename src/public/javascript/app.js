@@ -20,7 +20,6 @@ let problemasElegidos = arrayProblemasPucp
 let numeroDelProblemaActual = 0
 let rpta
 let mostrarSolucion
-let soloUnaVezDelContadorFinal = true // solo se ejecutará una vez la funcion de contador de correctas e incorrectas 
 
 // variables del contador de correctas e incorrectas
 let correctas = 0
@@ -60,7 +59,11 @@ function siguiente() {
         correrTiempo("particular") // reiniciar el cronometro particular
     } else {
         console.log("¡Terminaste!")
-        contadorDeCorrectasIncorrectas(soloUnaVezDelContadorFinal) // esta funcion se ejecutará solo una vez
+        espacioParaTiempoParticular.innerHTML = "¡Terminaste!"
+        espacioParaTiempoGeneral.innerHTML = "¡Terminaste!"
+        
+
+        contadorDeCorrectasIncorrectas() 
         // deshabilitar los botones de avanzar, retroceder y de comprobar
         botonRetroceder.disabled = true
         botonSiguiente.disabled = true
@@ -68,6 +71,7 @@ function siguiente() {
         // muestra en pantalla el reporte de correctas e incorrectas que se tuvo
         espacioParaProblemas.innerHTML = "<p>Tuviste <strong>" + correctas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + incorrectas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco + "</strong> en blanco <i class='fas fa-circle'></i></p>"
         clearInterval(idTiempoParticular)
+        clearInterval(idTiempoGeneral)
     }
     limpiarPantalla()
 }
@@ -186,8 +190,7 @@ function estadoHabilitadoODeshabilitadoRadioButtons() {
     }
 }
 
-function contadorDeCorrectasIncorrectas(valor) {
-    if(valor == true) {
+function contadorDeCorrectasIncorrectas() {
         for(let i=0; i < problemasElegidos.length; i++){
             if(problemasElegidos[i].estado == "correcto"){
                 correctas++
@@ -197,14 +200,10 @@ function contadorDeCorrectasIncorrectas(valor) {
                 incorrectas++
             }
         }
-        soloUnaVezDelContadorFinal = false
-    }
 }
 
 function limpiarPantalla() {
     espacioParaCorreccion.innerHTML = "Corrección"
     espacioParaSolucion.innerHTML = "Solución"
 }
-
-
 

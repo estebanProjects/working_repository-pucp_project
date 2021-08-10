@@ -3,8 +3,9 @@ let minutosParticularHtml = document.getElementById('minutosParticularHtml')
 let segundosParticularHtml = document.getElementById('segundosParticularHtml')
 let minutosGeneralHtml = document.getElementById('minutosGeneralHtml')
 let segundosGeneralHtml = document.getElementById('segundosGeneralHtml')
-let espacioParaTiempoParticular = document.getElementById('espacioParaTiempoParticular')
 
+let espacioParaTiempoParticular = document.getElementById('espacioParaTiempoParticular')
+let espacioParaTiempoGeneral = document.getElementById('espacioParaTiempoGeneral')
 // funciones del tiempo
 function correrTiempo(grado) {
  
