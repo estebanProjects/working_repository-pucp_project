@@ -74,17 +74,20 @@ let arrayProblemasPucp = [{ // ARITMETICA
 }
 ]
 
+let problemasSeleccionados = []
+let numeroAleatorio
+
 
 if(materia == 'aritmetica' || materia == 'algebra' || materia == 'geometria') {
     let cantidadDeEjercicios = 2
     arrayProblemasPucp = arrayProblemasPucp.filter(problema => problema.curso == materia)
     mezclarArray(arrayProblemasPucp)
-    arrayProblemasPucp = arrayProblemasPucp.splice(0, cantidadDeEjercicios) // Muestra un limite de ejercicios del repertorio
+    problemasSeleccionadosDelRepertorio(cantidadDeEjercicios)
     agregandoElElementoNeutro()
 } else if(materia == 'matematica'){
     let cantidadDeEjercicios = 7
     mezclarArray(arrayProblemasPucp)
-    arrayProblemasPucp = arrayProblemasPucp.splice(0, cantidadDeEjercicios) // Muestra un limite de ejercicios del repertorio
+    problemasSeleccionadosDelRepertorio(cantidadDeEjercicios)
     agregandoElElementoNeutro()
 }
 
@@ -102,8 +105,15 @@ function mezclarArray(inputArray){ // funcion para aleatorizar los problemas
 }
 
 function agregandoElElementoNeutro() {
-    arrayProblemasPucp.unshift({  // agregando un elemento con atributos neutro al inicio del array
+    problemasSeleccionados.unshift({  // agregando un elemento con atributos neutro al inicio del array
         respuesta: "neutro",
         estado: "neutro",
         alternativaDelUsuario: "neutro",})
+}
+
+function problemasSeleccionadosDelRepertorio(cantidadDeEjercicios) {
+    for(let i=0; i<cantidadDeEjercicios; i++){
+        numeroAleatorio = Math.floor(Math.random()*arrayProblemasPucp.length)
+        problemasSeleccionados.push(arrayProblemasPucp[numeroAleatorio])
+    }
 }

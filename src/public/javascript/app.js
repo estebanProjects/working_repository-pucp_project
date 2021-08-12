@@ -16,7 +16,7 @@ let idTiempoParticular
 let idTiempoGeneral
 
 // variables internas - propio del Javascript
-let problemasElegidos = arrayProblemasPucp
+let problemasElegidos = problemasSeleccionados
 let numeroDelProblemaActual = 0
 let rpta
 let mostrarSolucion
