@@ -76,11 +76,15 @@ let arrayProblemasPucp = [{ // ARITMETICA
 
 
 if(materia == 'aritmetica' || materia == 'algebra' || materia == 'geometria') {
+    let cantidadDeEjercicios = 2
     arrayProblemasPucp = arrayProblemasPucp.filter(problema => problema.curso == materia)
     mezclarArray(arrayProblemasPucp)
+    arrayProblemasPucp = arrayProblemasPucp.splice(0, cantidadDeEjercicios) // Muestra un limite de ejercicios del repertorio
     agregandoElElementoNeutro()
 } else if(materia == 'matematica'){
+    let cantidadDeEjercicios = 7
     mezclarArray(arrayProblemasPucp)
+    arrayProblemasPucp = arrayProblemasPucp.splice(0, cantidadDeEjercicios) // Muestra un limite de ejercicios del repertorio
     agregandoElElementoNeutro()
 }
 
