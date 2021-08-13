@@ -11,12 +11,15 @@ let espacioParaCorreccion = document.getElementById('espacioParaCorreccion')
 let radioButtons = document.getElementById('radioButtons')
 let alternativas = document.getElementsByName('alternativa')
 
+let indicadorDeEjercicios = document.getElementById('indicadorDeEjercicios')
+let indicadorDelProblemaActual = document.getElementById('indicadorDelProblemaActual')
+
 // variables del tiempo - propio del Javascript
 let idTiempoParticular
 let idTiempoGeneral
 
 // variables internas - propio del Javascript
-let problemasElegidos = problemasSeleccionados
+let problemasElegidos = problemasSeleccionados; 
 let numeroDelProblemaActual = 0
 let rpta
 let mostrarSolucion
@@ -31,6 +34,9 @@ botonEmpezar.addEventListener('click', empezar)
 botonRetroceder.addEventListener('click', retroceder)
 botonSiguiente.addEventListener('click', siguiente)
 botonComprobar.addEventListener('click', comprobar)
+
+// estado del total de problemas
+indicadorDelTotalDeEjercicios.innerHTML = problemasElegidos.length - 1
 
 // Botones
 // boton empezar
@@ -57,17 +63,20 @@ function siguiente() {
         minutosParticular = cantidadMinutosParticular
         segundosParticular = cantidadSegundosParticular
         correrTiempo("particular") // reiniciar el cronometro particular
+
+        // modificar el indicador del problemaActual
+        indicadorDelProblemaActual.innerHTML = numeroDelProblemaActual
     } else {
         console.log("¡Terminaste!")
         espacioParaTiempoParticular.innerHTML = "¡Terminaste!"
         espacioParaTiempoGeneral.innerHTML = "¡Terminaste!"
-        
 
         contadorDeCorrectasIncorrectas() 
         // deshabilitar los botones de avanzar, retroceder y de comprobar
         botonRetroceder.disabled = true
         botonSiguiente.disabled = true
         botonComprobar.disabled = true
+        desHabilitarRadioButtons()
         // muestra en pantalla el reporte de correctas e incorrectas que se tuvo
         espacioParaProblemas.innerHTML = "<p>Tuviste <strong>" + correctas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + incorrectas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco + "</strong> en blanco <i class='fas fa-circle'></i></p>"
         clearInterval(idTiempoParticular)
@@ -90,6 +99,9 @@ function retroceder() {
         minutosParticular = cantidadMinutosParticular
         segundosParticular = cantidadSegundosParticular
         correrTiempo("particular") // reiniciar el cronometro particular
+
+        // modificar el indicador del problemaActual
+        indicadorDelProblemaActual.innerHTML = numeroDelProblemaActual
     }
     limpiarPantalla()
 }
@@ -207,3 +219,8 @@ function limpiarPantalla() {
     espacioParaSolucion.innerHTML = "Solución"
 }
 
+function desHabilitarRadioButtons() {
+    for(let i=0; i<alternativas.length; i++) {
+        alternativas[i].disabled = true
+    }
+}
