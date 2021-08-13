@@ -18,7 +18,10 @@ let arrayProblemasPucp = [{
     curso: 'redaccion'
 }]
 
-mezclarArray(arrayProblemasPucp)
+let problemasSeleccionados = []
+let numeroAleatorio
+
+let cantidadDeEjercicios = 2
 
 // variable del tiempo para redaccion
 let cantidadMinutosParticular = 0
@@ -28,17 +31,22 @@ let segundosParticular = cantidadSegundosParticular
 let minutosGeneral = 0
 let segundosGeneral = arrayProblemasPucp.length*30
 regularizarTiempo()
+problemasSeleccionadosDelRepertorio(cantidadDeEjercicios)
 agregandoElElementoNeutro()
 // funciones
-function mezclarArray(inputArray){ // funcion para aleatorizar los problemas
-    inputArray.sort(()=> Math.random() - 0.5);
-}
-
 function agregandoElElementoNeutro() {
-    arrayProblemasPucp.unshift({  // agregando un elemento con atributos neutro al inicio del array
+    problemasSeleccionados.unshift({  // agregando un elemento con atributos neutro al inicio del array
         respuesta: "neutro",
         estado: "neutro",
         alternativaDelUsuario: "neutro",})
+}
+
+function problemasSeleccionadosDelRepertorio(cantidadDeEjercicios) {
+    for(let i=0; i<cantidadDeEjercicios; i++){
+        numeroAleatorio = Math.floor(Math.random()*arrayProblemasPucp.length)
+        problemasSeleccionados.push(arrayProblemasPucp[numeroAleatorio])
+        arrayProblemasPucp.splice(numeroAleatorio, 1)
+    }
 }
 
 function regularizarTiempo() {

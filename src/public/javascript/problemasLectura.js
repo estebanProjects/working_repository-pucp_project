@@ -58,13 +58,11 @@ let textoC = [{
 
 let problemas_lectura = [textoA, textoB, textoC]
 
-mezclarArray(problemas_lectura)
+let problemasSeleccionados = []
+let numeroAleatorio
 
-for(let i=0; i < problemas_lectura.length; i++) { // pone todos los problemas de lectura en un array
-    for(let j=0; j < problemas_lectura[i].length; j++) {
-        arrayProblemasPucp.push(problemas_lectura[i][j])
-    }
-}
+let cantidadDeTextos = 2
+
 
 
 // variable del tiempo para lectura
@@ -75,18 +73,31 @@ let segundosParticular = cantidadSegundosParticular
 let minutosGeneral = 0
 let segundosGeneral = arrayProblemasPucp.length*cantidadSegundosParticular
 regularizarTiempo()
+problemasSeleccionadosDelRepertorio(cantidadDeTextos)
+
+for(let i=0; i < arrayProblemasPucp.length; i++) { // pone todos los problemas de lectura en un array
+    for(let j=0; j < arrayProblemasPucp[i].length; j++) {
+        problemasSeleccionados.push(arrayProblemasPucp[i][j])
+    }
+}
+
 agregandoElElementoNeutro()
 
 // funciones
-function mezclarArray(inputArray){ // funcion para aleatorizar los problemas
-    inputArray.sort(()=> Math.random() - 0.5);
-}
 
 function agregandoElElementoNeutro() {
-    arrayProblemasPucp.unshift({  // agregando un elemento con atributos neutro al inicio del array
+    problemasSeleccionados.unshift({  // agregando un elemento con atributos neutro al inicio del array
         respuesta: "neutro",
         estado: "neutro",
         alternativaDelUsuario: "neutro",})
+}
+
+function problemasSeleccionadosDelRepertorio(cantidadDeTextos) {
+    for(let i=0; i<cantidadDeTextos; i++){
+        numeroAleatorio = Math.floor(Math.random()*problemas_lectura.length)
+        arrayProblemasPucp.push(problemas_lectura[numeroAleatorio])
+        problemas_lectura.splice(numeroAleatorio, 1)
+    }
 }
 
 function regularizarTiempo() {
