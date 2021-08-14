@@ -144,10 +144,13 @@ a {
     top: 0.2em;
     min-width: 10em;
     max-height: 13.1em;
-    height: 8em;
+    height: 8.4em;
     width: 22.6em;
     background-color: rgba(117, 204, 95, 0.5);
     border:1px solid rgba(40, 168, 40, 0.336);
+    border-left:2px solid rgba(63, 119, 63, 0.329);
+    border-right:2px solid rgba(60, 102, 60, 0.486);
+    border-bottom: 3px solid rgba(60, 102, 60, 0.295);;
     position: relative;
     right:1em;
     display: flex;
@@ -162,10 +165,13 @@ a {
     
     max-width: 22.6em;
     max-height: 25em;
-    height: 8em;
+    height: 7.6em;
     width: 25em;
     background-color: rgba(117, 204, 95, 0.5);
     border:1px solid rgba(40, 168, 40, 0.336);
+    border-right:2px solid rgba(63, 119, 63, 0.329);
+    border-left:2px solid rgba(60, 102, 60, 0.486);
+    border-top: 2px solid rgba(60, 102, 60, 0.233);
 
     display: flex;
     justify-content: center;
@@ -240,16 +246,19 @@ a {
 
 
 .tamañoDeLaImagenDelProblemaletras{ /*esto es la clase que se crea en renderizarproblemas() en app.js,la imagen del problema cargado pero de letras*/
-
-    border-radius: 2.5px;
+    
+    border-radius: 7.5px;
+    border:solid 3px rgba(46, 177, 46, 0.932);
+    display: block;
+    margin:auto;
 }
 
 .tamañoDeLaImagenDeLaSolucionletras{ /* esta igual,pero tienes que ajustar los tamaños para que quepa en el contenedor*/
-    
-
+    max-width:20em;
+    height:3.5em;
     border-radius: 1.85px;
 }
-
+.texto{margin-bottom: 10px;margin-top: 0.4em;border-radius: 2.85px;border:solid 3px rgba(46, 177, 46, 0.932);}/*apartado esclusivo de lectura*/
 
 /*-----------personalizacion general----------*/
     .respuestaCorrecta {
@@ -286,7 +295,7 @@ a {
    
  /*tiempo general y particular------*/
 
-    .generaltime{background-color: green;border: 5px green solid;border-radius: 2px;position: absolute;width: 78px;height: 34px;top:2.4em;left: 118em;display:flex;align-items: center;justify-content: center;}
+    .generaltime{background-color: green;border: 5px green solid;border-bottom-left-radius: 3px;border-bottom-right-radius: 3px;position: absolute;width: 95px;height: 45px;top:0em;left: 110em;display:flex;align-items: center;justify-content: center;}
 
 
     .time {

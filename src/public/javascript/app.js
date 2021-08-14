@@ -74,6 +74,7 @@ function siguiente() {
         clearInterval(idTiempoGeneral)
     }
     limpiarPantalla()
+    document.getElementsByClassName("time")[0].style.backgroundColor = "rgb(82, 190, 61)";
 }
 
 function retroceder() {
@@ -121,8 +122,13 @@ function funcionMostrarSolucion() {
 // funciones auxiliares
 function renderizarImagenDelProblema() {
     let imagenDelProblema = problemasElegidos[numeroDelProblemaActual].imgProblema // direccion de la imagen del problema
-    
-    espacioParaProblemas.innerHTML = "<img class='tamañoDeLaImagenDelProblema"+tipo+"' src='" + imagenDelProblema + "'>"
+    let texto=problemasElegidos[numeroDelProblemaActual].lectura
+     if (materia == 'lectura'){
+     espacioParaProblemas.innerHTML = "<img class='texto' src='" + texto + "'><img class='tamañoDeLaImagenDelProblema"+tipo+"' src='" + imagenDelProblema + "'>";
+  
+}
+ else if (materia=="redaccion"){espacioParaProblemas.innerHTML = "<img class='tamañoDeLaImagenDelProblema"+tipo+"' src='" + imagenDelProblema + "' style='min-height:9em;max-width:28em;'>" }
+else{ espacioParaProblemas.innerHTML = "<img class='tamañoDeLaImagenDelProblema"+tipo+"' src='" + imagenDelProblema + "'>"}
 }
 
 function obtenerDatosDelProblema() {
