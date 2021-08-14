@@ -70,23 +70,26 @@ let numeroAleatorio
 let cantidadDeTextos = 2
 
 
-
+problemasSeleccionadosDelRepertorio(cantidadDeTextos)
 // variable del tiempo para lectura
 let cantidadMinutosParticular = 0
 let cantidadSegundosParticular = 45
 let minutosParticular = cantidadMinutosParticular
 let segundosParticular = cantidadSegundosParticular
 
-let minutosGeneral = 0
-let segundosGeneral = arrayProblemasPucp.length*cantidadSegundosParticular
-regularizarTiempo()
-problemasSeleccionadosDelRepertorio(cantidadDeTextos)
+
+
 
 for(let i=0; i < arrayProblemasPucp.length; i++) { // pone todos los problemas de lectura en un array
     for(let j=0; j < arrayProblemasPucp[i].length; j++) {
         problemasSeleccionados.push(arrayProblemasPucp[i][j])
     }
 }
+
+let minutosGeneral = 0
+// let segundosGeneral = arrayProblemasPucp.length*cantidadSegundosParticular
+let segundosGeneral = (problemasSeleccionados.length)*cantidadSegundosParticular
+regularizarTiempo()
 
 
 agregandoElElementoNeutro()
