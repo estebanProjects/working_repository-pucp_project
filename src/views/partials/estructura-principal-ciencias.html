@@ -10,6 +10,7 @@
     <div class="generaltime" id="espacioParaTiempoGeneral">
         <span id="minutosGeneralHtml" >--</span>:<span id="segundosGeneralHtml" >--</span>
     </div>
+    
 
     <main class="PrincipalForSpaces">
 
@@ -18,7 +19,6 @@
         </div>
 
         <div class="spaceForProblems" id="espacioParaProblemas">
-            
             <div class="spaceForProblems2" id="spaceForProblems2">
                 <h2>¡Vamos futuro cachimbo!</h2>
                 <img class="logo-pucp" src="./logo/logo-pucp.png" alt="">
@@ -31,36 +31,40 @@
 
     </main>
 
-    <div class="botones_parte_de_abajo">
-        <button class="b" id="retroceder"><i class="fas fa-chevron-left"></i></button>
-        <section class="botons">
-            <a class="empezar" id="empezar">Empezar</a>
-            
-            <div class="cont-inp-comp" id="boxDeAlternativasYComprobar">
+    <div class="botones_abajo_mas_indicador">
+        <div id="indicadorDeEjercicios"><span id="indicadorDelProblemaActual">0</span>/<span id="indicadorDelTotalDeEjercicios">10</span></div>
 
-                <div class="radio" id="radioButtons">
-                    <div>
-                        <input type="radio" name="alternativa" id="A" value="a">
-                        <label for="A">A</label>
+        <div class="botones_parte_de_abajo">
+            <button class="b" id="retroceder"><i class="fas fa-chevron-left"></i></button>
+            <section class="botons">
+                <a class="empezar" id="empezar">Empezar</a>
+                
+                <div class="cont-inp-comp" id="boxDeAlternativasYComprobar">
+    
+                    <div class="radio" id="radioButtons">
+                        <div>
+                            <input type="radio" name="alternativa" id="A" value="a">
+                            <label for="A">A</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="alternativa" id="B" value="b">
+                            <label for="B">B</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="alternativa" id="C" value="c">
+                            <label for="C">C</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="alternativa" id="D" value="d">
+                            <label for="D">D</label>
+                        </div>
                     </div>
-                    <div>
-                        <input type="radio" name="alternativa" id="B" value="b">
-                        <label for="B">B</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="alternativa" id="C" value="c">
-                        <label for="C">C</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="alternativa" id="D" value="d">
-                        <label for="D">D</label>
-                    </div>
+    
+                    <button class="comprobar" id="comprobar">Comprobar</button>
                 </div>
-
-                <button class="comprobar" id="comprobar">Comprobar</button>
-            </div>
-        </section>
-        <button class="b" id="siguiente"><i class="fas fa-chevron-right"></i></button>
+            </section>
+            <button class="b" id="siguiente"><i class="fas fa-chevron-right"></i></button>
+        </div>
     </div>
 
 </div>
