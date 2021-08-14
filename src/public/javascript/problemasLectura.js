@@ -88,6 +88,7 @@ for(let i=0; i < arrayProblemasPucp.length; i++) { // pone todos los problemas d
     }
 }
 
+
 agregandoElElementoNeutro()
 
 // funciones

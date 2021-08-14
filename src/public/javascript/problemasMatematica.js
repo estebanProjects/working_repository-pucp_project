@@ -77,14 +77,15 @@ let arrayProblemasPucp = [{ // ARITMETICA
 let problemasSeleccionados = []
 let numeroAleatorio
 
+let cantidadDeEjercicios 
 
 if(materia == 'aritmetica' || materia == 'algebra' || materia == 'geometria') {
-    let cantidadDeEjercicios = 2
+    cantidadDeEjercicios = 3
     arrayProblemasPucp = arrayProblemasPucp.filter(problema => problema.curso == materia)
     problemasSeleccionadosDelRepertorio(cantidadDeEjercicios)
     agregandoElElementoNeutro()
 } else if(materia == 'matematica'){
-    let cantidadDeEjercicios = 7
+    cantidadDeEjercicios = 7
     problemasSeleccionadosDelRepertorio(cantidadDeEjercicios)
     agregandoElElementoNeutro()
 }
@@ -94,7 +95,7 @@ let cantidadMinutosParticular = 2
 let cantidadSegundosParticular = 0
 let minutosParticular = cantidadMinutosParticular
 let segundosParticular = cantidadSegundosParticular
-let minutosGeneral = arrayProblemasPucp.length*2
+let minutosGeneral = cantidadDeEjercicios*2
 let segundosGeneral = 0
 
 // funciones

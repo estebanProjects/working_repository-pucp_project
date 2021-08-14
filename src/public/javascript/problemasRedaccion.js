@@ -16,12 +16,20 @@ let arrayProblemasPucp = [{
     radioButtonDeshabilitado: false,
     imgResolucion: "https://www.dl.dropboxusercontent.com/s/egytud48r7tjizu/rel2.PNG?dl=0",
     curso: 'redaccion'
+},{
+    imgProblema: "https://www.dl.dropboxusercontent.com/s/gbp6gcyhgnsbxmq/proble2.PNG?dl=0",
+    respuesta: "c",
+    alternativaDelUsuario: "",
+    estado: "",
+    radioButtonDeshabilitado: false,
+    imgResolucion: "https://www.dl.dropboxusercontent.com/s/egytud48r7tjizu/rel2.PNG?dl=0",
+    curso: 'redaccion'
 }]
 
 let problemasSeleccionados = []
 let numeroAleatorio
 
-let cantidadDeEjercicios = 2
+let cantidadDeEjercicios = 3
 
 // variable del tiempo para redaccion
 let cantidadMinutosParticular = 0
