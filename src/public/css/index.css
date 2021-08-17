@@ -119,6 +119,7 @@ body {
             background: #d3e0d0;
     }
     /* scroolbar y diseño de los hexagonos(con los cursos)*/
+    #cursosaelegir::-webkit-scrollbar-thumb{background:rgba(21, 21, 46, 0.171);border-radius: 5px;}
     #cursosaelegir::-webkit-scrollbar{background:rgba(26, 25, 25, 0.226);border-radius: 5px;}
         /*=cursos a elegir es el div que contiene los hexagonos=*/
     #cursosaelegir{width:72%;height:18em;overflow-x: auto;margin: auto; display:flex; }

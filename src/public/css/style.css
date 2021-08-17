@@ -58,7 +58,11 @@ a {
     width: 250px;
     height: 250px;
     background-color: rgba(117, 204, 95, 0.5);
-    border:1px solid rgba(40, 168, 40, 0.336);
+    border:2px solid rgba(60, 102, 60, 0.233);
+    border-left:2px solid rgba(63, 119, 63, 0.329);
+    border-right:2px solid rgba(60, 102, 60, 0.486);
+    border-bottom: 3px solid rgba(60, 102, 60, 0.486);
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -71,8 +75,10 @@ a {
     min-width: 250px;
     min-height: 250px;
     background-color: rgba(117, 204, 95, 0.5);
-    border:1px solid rgba(40, 168, 40, 0.336);
-
+    border:3px solid rgba(60, 102, 60, 0.486);
+    border-right:2px solid rgba(63, 119, 63, 0.329);
+    border-left:2px solid rgba(60, 102, 60, 0.486);
+    border-top: 2px solid rgba(60, 102, 60, 0.233);
 
     display: flex;
     justify-content: center;
@@ -251,9 +257,9 @@ a {
 }
 /* este para mover la palabra "correccion/solucion" dentro del div de las claves*/
 /* #palabraCorreccion-letras{position: relative;left:3.5em;padding:4px}  */
-
-.contenedorletras::-webkit-scrollbar{background:rgba(26, 25, 25, 0.226);border-radius: 5px;}
-.contenedorletras{overflow-y: scroll;max-height: 23em;} /*este contenedor es de las imagenes de los problemas */
+.spaceForProblems-letras::-webkit-scrollbar-thumb{background:rgba(26, 25, 25, 0.226);border-radius: 5px;}
+.spaceForProblems-letras::-webkit-scrollbar{background:rgba(26, 25, 25, 0.226);border-radius: 5px;}
+.spaceForProblems-letras{overflow-y: auto;max-height: 21em;overflow-x: hidden;} /*este contenedor es de las imagenes de los problemas */
 
 .resp1{left:1.29em;position: relative;bottom:4em;}  /* esto mueve las alternativas*/
 .resp2{left:0.11em;position: relative;bottom:1.3em;}
