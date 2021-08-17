@@ -23,6 +23,7 @@ let problemasElegidos = problemasSeleccionados;
 let numeroDelProblemaActual = 0
 let rpta
 let mostrarSolucion
+let apretadoComprobar = false
 
 // variables del contador de correctas e incorrectas
 let correctas = 0
@@ -42,10 +43,11 @@ indicadorDelTotalDeEjercicios.innerHTML = problemasElegidos.length - 1
 // boton empezar
 function empezar() {
     // comenzar el cronometro general
-    correrTiempo("general")
+    // correrTiempo("general")
     // acomodando los botones
     botonEmpezar.style.display = 'none'
     boxDeAlternativasYComprobar.style.display = 'flex'
+    correrTiempo("general")
     siguiente()
 }
 
@@ -54,6 +56,7 @@ function siguiente() {
     obtenerDatosDelProblema()
     numeroDelProblemaActual++ // aumentar en 1 el valor de esta variable para que pueda pasar a la siguiente pregunta
     if(problemasElegidos.length > numeroDelProblemaActual) { // se va ejecutar si la "cantidad de problemas" es mayor al problema actual
+        
         estadoHabilitadoODeshabilitadoRadioButtons()
         renderizarImagenDelProblema()
         desmarcarAlternativas()
@@ -63,7 +66,10 @@ function siguiente() {
         minutosParticular = cantidadMinutosParticular
         segundosParticular = cantidadSegundosParticular
         correrTiempo("particular") // reiniciar el cronometro particular
-
+        if(apretadoComprobar) {
+            correrTiempo("general")
+        }
+        apretadoComprobar = false
         // modificar el indicador del problemaActual
         indicadorDelProblemaActual.innerHTML = numeroDelProblemaActual
     } else {
@@ -88,6 +94,7 @@ function siguiente() {
 
 function retroceder() {
     if(numeroDelProblemaActual > 1) { // se va ejecutar si el problema actual es el 2 o más
+        
         obtenerDatosDelProblema()
         numeroDelProblemaActual-- // disminuir en 1 el valor de esta variable para que pueda retroceder a la anterior pregunta
 
@@ -100,7 +107,10 @@ function retroceder() {
         minutosParticular = cantidadMinutosParticular
         segundosParticular = cantidadSegundosParticular
         correrTiempo("particular") // reiniciar el cronometro particular
-
+        if(apretadoComprobar) {
+            correrTiempo("general")
+        }
+        apretadoComprobar = false
         // modificar el indicador del problemaActual
         indicadorDelProblemaActual.innerHTML = numeroDelProblemaActual
     }
@@ -110,6 +120,8 @@ function retroceder() {
 function comprobar() {
     botonComprobar.disabled = true // deshabilitar el boton comprobar
     obtenerDatosDelProblema()
+
+    apretadoComprobar = true
 
     if(problemasElegidos[numeroDelProblemaActual].respuesta == rpta) { // si está correcto
         espacioParaCorreccion.innerHTML = "<p class='respuestaCorrecta'>¡Correcto!</p>" + "<button id='mostrarSolucion'> Ver solución </button>"
@@ -124,6 +136,7 @@ function comprobar() {
     estadoHabilitadoODeshabilitadoRadioButtons()
 
     clearInterval(idTiempoParticular) // parando el tiempo particular
+    clearInterval(idTiempoGeneral)
 }
 
 function funcionMostrarSolucion() {
