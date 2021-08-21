@@ -21,3 +21,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.listen(app.get('port'), () => {
     console.log('Server on port', app.get('port'));
 });
+
+var Parse = require('parse/node');
+
+Parse.initialize("RwbhceyC51nedPXtskCsVgyABgcZtn2c8saeigMW","DSmjkuzLLvzrfw6VaQPJbTW7fRJPOVjL59zLV1kG"); //PASTE HERE YOUR Back4App APPLICATION ID AND YOUR JavaScript KEY
+Parse.serverURL = 'https://parseapi.back4app.com/';
+console.log("funciona??");
