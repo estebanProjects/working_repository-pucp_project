@@ -4,7 +4,7 @@ const path = require('path');
 
 
 // settings
-app.set('port', 8080);
+// app.set('port', 8080);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
@@ -18,6 +18,6 @@ app.use(require('./routes/index'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // listening the server
-app.listen(app.get('port'), () => {
-    console.log('Server on port', app.get('port'));
+app.listen(process.env.PORT || 8080, () => {
+    console.log('Server on port 8080');
 });
