@@ -1,0 +1,11 @@
+.boxDeProblemaYSolucion {
+    background-color: aquamarine;
+    height: 350px;
+    width: 600px;
+    margin: 30px auto;
+}
+
+.boxDeProblemaYSolucion div img {
+    height: 30em;
+    width: 20em;
+}
