@@ -316,8 +316,10 @@ a {
      .logotipowhite{background-color: rgb(255, 255, 255);} /*este no se que hara ??????????*/
    
  /*tiempo general y particular------*/
+    .contenedordelostime{position: absolute;left: 79%;display:flex;top:0em;color: rgb(0, 255, 255);font-family:"Noto+Sans+JP","serif";}
+    .indicador-tiempo{position: relative;z-index:3;font-size: 1.5rem;}
 
-    .generaltime{background-color: green;border: 5px green solid;border-bottom-left-radius: 3px;border-bottom-right-radius: 3px;position: absolute;width: 95px;height: 45px;top:0em;left: 110em;display:flex;align-items: center;justify-content: center;}
+    .generaltime{background-color: green;border: 4px rgb(39, 199, 199) solid;border-top:none ;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;width: 100px;height: 50px;display:flex;align-items: center;justify-content: center;}
 
 
     .time {
