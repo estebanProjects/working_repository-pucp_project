@@ -1,4 +1,4 @@
-// variables principales - obtenidas desde el HTML
+// variables principales - obtenidas desde el HTML 
 let botonEmpezar = document.getElementById('empezar')
 let boxDeAlternativasYComprobar = document.getElementById('boxDeAlternativasYComprobar')
 let botonSiguiente = document.getElementById('siguiente')
@@ -23,6 +23,7 @@ let problemasElegidos = problemasSeleccionados;
 let numeroDelProblemaActual = 0
 let rpta
 let mostrarSolucion
+let botonReporte
 let apretadoComprobar = false
 
 // variables del contador de correctas e incorrectas
@@ -84,7 +85,10 @@ function siguiente() {
         botonComprobar.disabled = true
         desHabilitarRadioButtons()
         // muestra en pantalla el reporte de correctas e incorrectas que se tuvo
-        espacioParaProblemas.innerHTML = "<p>Tuviste <strong>" + correctas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + incorrectas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco + "</strong> en blanco <i class='fas fa-circle'></i></p>"+"</br><button><a href='https://docs.google.com/forms/d/1papjH2epWCm04dx2Hh-BbKWcrOpr20NExaxgc6PS0BY/edit?usp=sharing' class='formulario'>como fue tu experiencia?,danos tu opinion¡</a></button>";
+
+        espacioParaProblemas.innerHTML = "<p>Tuviste <strong>" + correctas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + incorrectas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco + "</strong> en blanco <i class='fas fa-circle'></i></p><button class='botondelreporte' id='reporte'>Ver Reporte Completo</button>"+"</br><button><a href='https://docs.google.com/forms/d/1papjH2epWCm04dx2Hh-BbKWcrOpr20NExaxgc6PS0BY/edit?usp=sharing' class='formulario'>como fue tu experiencia?,danos tu opinion¡</a></button>";
+        botonReporte = document.getElementById('reporte') 
+        botonReporte.addEventListener('click', verReporte) // activar el escuchador de Eventos para cuando presione "Ver Reporte"
         clearInterval(idTiempoParticular)
         clearInterval(idTiempoGeneral)
     }
@@ -242,4 +246,37 @@ function desHabilitarRadioButtons() {
     for(let i=0; i<alternativas.length; i++) {
         alternativas[i].disabled = true
     }
+}
+
+
+
+// Reporte ----------------------
+
+let container = document.getElementById('container')
+let reporte = document.getElementById('reporte')
+
+function verReporte() {
+    container.style.display = 'none'
+
+    for(let i=1; i <= problemasElegidos.length-1; i++) {
+        reporte.innerHTML += 
+        `<div class="boxDeProblemaYSolucion">
+            
+            <div class="boxProblem material-placeholder"><img class="responsive-img materialboxed" src="${problemasElegidos[i].imgProblema}"></div>
+           <div class="textodeenmedio">
+                <h2>Problema ${i} </h2>
+                <p>patata</p>
+           </div>
+            <div class="boxSolucion material-placeholder"><img class="responsive-img materialboxed" src="${problemasElegidos[i].imgResolucion}" ></div>        
+        </div>` 
+    }   
+
+    // document.addEventListener('DOMContentLoaded', () => {
+        const imgLightBox = document.querySelectorAll('.materialboxed');
+        M.Materialbox.init(imgLightBox, {
+            inDuration: 500,
+            outDuration: 500
+        });
+    // });
+    
 }
