@@ -1,4 +1,4 @@
-// variables principales - obtenidas desde el HTML
+// variables principales - obtenidas desde el HTML 
 let botonEmpezar = document.getElementById('empezar')
 let boxDeAlternativasYComprobar = document.getElementById('boxDeAlternativasYComprobar')
 let botonSiguiente = document.getElementById('siguiente')
