@@ -84,7 +84,7 @@ function siguiente() {
         botonComprobar.disabled = true
         desHabilitarRadioButtons()
         // muestra en pantalla el reporte de correctas e incorrectas que se tuvo
-        espacioParaProblemas.innerHTML = "<p>Tuviste <strong>" + correctas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + incorrectas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco + "</strong> en blanco <i class='fas fa-circle'></i></p>"
+        espacioParaProblemas.innerHTML = "<p>Tuviste <strong>" + correctas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + incorrectas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco + "</strong> en blanco <i class='fas fa-circle'></i></p>"+"</br><button><a href='https://docs.google.com/forms/d/1papjH2epWCm04dx2Hh-BbKWcrOpr20NExaxgc6PS0BY/edit?usp=sharing' class='formulario'>como fue tu experiencia?,danos tu opinion¡</a></button>";
         clearInterval(idTiempoParticular)
         clearInterval(idTiempoGeneral)
     }

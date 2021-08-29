@@ -338,6 +338,7 @@ a {
     }
     
 /* Botons */
+.formulario{background-color: rgb(49, 47, 47);height:20px;width:2em;}/*disponible en las betta*/
 
 .botones_parte_de_abajo {
     display: flex;
