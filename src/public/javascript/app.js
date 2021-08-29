@@ -85,7 +85,7 @@ function siguiente() {
         botonComprobar.disabled = true
         desHabilitarRadioButtons()
         // muestra en pantalla el reporte de correctas e incorrectas que se tuvo
-        espacioParaProblemas.innerHTML = "<p>Tuviste <strong>" + correctas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + incorrectas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco + "</strong> en blanco <i class='fas fa-circle'></i></p><button id='reporte'>Ver Reporte Completo</button>"
+        espacioParaProblemas.innerHTML = "<p>Tuviste <strong>" + correctas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + incorrectas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco + "</strong> en blanco <i class='fas fa-circle'></i></p><button class='botondelreporte' id='reporte'>Ver Reporte Completo</button>"
         botonReporte = document.getElementById('reporte') 
         botonReporte.addEventListener('click', verReporte) // activar el escuchador de Eventos para cuando presione "Ver Reporte"
         clearInterval(idTiempoParticular)
@@ -249,7 +249,7 @@ function desHabilitarRadioButtons() {
 
 
 
-// Reporte
+// Reporte ----------------------
 
 let container = document.getElementById('container')
 let reporte = document.getElementById('reporte')
@@ -260,8 +260,22 @@ function verReporte() {
     for(let i=1; i <= problemasElegidos.length-1; i++) {
         reporte.innerHTML += 
         `<div class="boxDeProblemaYSolucion">
-            <div class="boxProblem"><img src="https://www.dl.dropboxusercontent.com/s/1f4ix7a1by17zls/alg_problema2.jpg?dl=0"></div>
-            <div class="boxSolucion"></div>
+            
+            <div class="boxProblem material-placeholder"><img class="responsive-img materialboxed" src="${problemasElegidos[i].imgProblema}"></div>
+           <div class="textodeenmedio">
+                <h2>Problema ${i} </h2>
+                <p>patata</p>
+           </div>
+            <div class="boxSolucion material-placeholder"><img class="responsive-img materialboxed" src="${problemasElegidos[i].imgResolucion}" ></div>        
         </div>` 
     }   
+
+    // document.addEventListener('DOMContentLoaded', () => {
+        const imgLightBox = document.querySelectorAll('.materialboxed');
+        M.Materialbox.init(imgLightBox, {
+            inDuration: 500,
+            outDuration: 500
+        });
+    // });
+    
 }

@@ -108,6 +108,14 @@ a {
     padding: 5px;
 }
 
+.spaceForProblems h2 {
+    font-weight: bold;
+}
+
+.spaceForProblems strong {
+    font-weight: bold;
+}
+
    .spaceForProblems2{ /*el contenedor del logotipo de la pucp,que aparece al empezar*/
         min-width: 365px;
         min-height: 365px;
@@ -402,6 +410,7 @@ a {
     padding: 5px;
     width: 100px;
 }
+
 
 .botons .radio div {
     margin-left: 14px;
