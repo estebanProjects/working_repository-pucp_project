@@ -86,7 +86,10 @@ function siguiente() {
         desHabilitarRadioButtons()
         // muestra en pantalla el reporte de correctas e incorrectas que se tuvo
 
-        espacioParaProblemas.innerHTML = "<p>Tuviste <strong>" + correctas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + incorrectas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco + "</strong> en blanco <i class='fas fa-circle'></i></p><button class='botondelreporte' id='reporte'>Ver Reporte Completo</button>"+"</br><button><a href='https://docs.google.com/forms/d/1papjH2epWCm04dx2Hh-BbKWcrOpr20NExaxgc6PS0BY/edit?usp=sharing' class='formulario'>como fue tu experiencia?,danos tu opinion¡</a></button>";
+         //incorrectas correctas y formulario (EN LAS BETTA)
+        espacioParaProblemas.innerHTML = "</br><button class='formulario'><a href='https://docs.google.com/forms/d/1papjH2epWCm04dx2Hh-BbKWcrOpr20NExaxgc6PS0BY/edit?usp=sharing' ><p class='textoformulario'>como fue tu experiencia?,</p><p class='textoformulario'>danos tu opinion¡</p></a></button>"+"<p>Tuviste <strong>" + correctas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + incorrectas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco +
+        //boton del reporte
+        "</strong> en blanco <i class='fas fa-circle'></i></p><button class='botondelreporte' id='reporte'>Ver Reporte Completo</button>";
         botonReporte = document.getElementById('reporte') 
         botonReporte.addEventListener('click', verReporte) // activar el escuchador de Eventos para cuando presione "Ver Reporte"
         clearInterval(idTiempoParticular)
@@ -146,8 +149,7 @@ function comprobar() {
 function funcionMostrarSolucion() {
     let imagenDeLaSolucion = problemasElegidos[numeroDelProblemaActual].imgResolucion // direccion de la imagen de la solucion
     espacioParaSolucion.innerHTML = "<img class='tamañoDeLaImagenDeLaSolucion"+tipo+"' src='" + imagenDeLaSolucion + "'>"
-} //"<img class="+`tamañoDeLaImagenDelProblema${tipo}"` +"\"src='" + imagenDeLaSolucion + "'>"
-
+} 
 // funciones auxiliares
 function renderizarImagenDelProblema() {
     let imagenDelProblema = problemasElegidos[numeroDelProblemaActual].imgProblema // direccion de la imagen del problema

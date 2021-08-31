@@ -46,60 +46,26 @@
     transform: scale(1.1);
  }
 
- .checkbox {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
+ .formulario{border: 3px rgb(2, 100, 192);border-radius: 5px;position: absolute;top:3em;border-style:solid double;max-width:40vh;width:40vh;}/*disponible en las betta*/
+ .textoformulario:hover{background-color: rgb(81, 87, 90);}
+ .textoformulario{ display: block;background-color: rgb(48, 48, 48);transition:2s}
 
- .checkbox input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-
-.casilla{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-  }
-  .checkbox:hover input ~ .casilla {
-    background-color: #ccc;
-  }
-  .checkbox input:checked ~ .casilla {
-    background-color: #2196F3;
-  }
-  /*crea el indicador se esconde cuando no esta marcado*/ 
-  .casilla:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  .checkbox input:checked ~ .casilla:after {
-    display: block;
-  }
-  .checkbox .casilla:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-
-  
+ /*radio buttons*/
+ [type="radio"]:not(:checked)+span, [type="radio"]:checked+span {
+  position: relative;
+  padding-left: 28px;
+  padding-right: 10px;
+  cursor: pointer;
+  display: inline-block;
+  height: 10px;
+  font-weight: bold;
+  line-height: 25px;
+  font-size: 1.5rem;
+  -webkit-transition: .28s ease;
+  transition: .28s ease;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color:rgb(20, 250, 181);
+}

@@ -96,12 +96,12 @@ a {
     background-color: rgb(49, 145, 30);
     
     position: relative;
-
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    align-content: flex-start;
     border-radius: 5px;
     font-size: 2rem;
     
@@ -346,7 +346,6 @@ a {
     }
     
 /* Botons */
-.formulario{background-color: rgb(49, 47, 47);height:20px;width:2em;}/*disponible en las betta*/
 
 .botones_parte_de_abajo {
     display: flex;
