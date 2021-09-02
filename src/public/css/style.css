@@ -108,7 +108,7 @@ a {
     padding: 5px;
 }
 
-.spaceForProblems h2 {
+h2 {
     font-weight: bold;
 }
 
@@ -321,10 +321,12 @@ a {
      .logotipowhite{background-color: rgb(255, 255, 255);} /*este no se que hara ??????????*/
    
  /*tiempo general y particular------*/
-    .contenedordelostime{position: absolute;left: 79%;display:flex;top:0em;color: rgb(0, 255, 255);font-family:"Noto+Sans+JP","serif";}
+    .contenedordelostime{position: absolute;left: 79%;display:flex;top:0em;color: rgb(0, 255, 255);font-family:"Noto+Sans+JP","serif";
+    margin-top: 20px;
+    }
     .indicador-tiempo{position: relative;z-index:3;font-size: 1.5rem;}
 
-    .generaltime{background-color: green;border: 4px rgb(39, 199, 199) solid;border-top:none ;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;width: 100px;height: 50px;display:flex;align-items: center;justify-content: center;}
+    .generaltime{background-color: green;border: 4px rgb(39, 199, 199) solid ;border-radius: 5px;width: 100px;height: 50px;display:flex;align-items: center;justify-content: center;}
 
 
     .time {
