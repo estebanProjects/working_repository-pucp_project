@@ -238,10 +238,7 @@ a {
      
  }
 
- .spaceForProblems-letras p {
-     position: relative;
-     top: 155px;
- }
+
 
  .spaceForProblems2-letras{ /*el contenedor del logotipo de la pucp que aparece al empezar,de letras*/
     min-width: 365px;

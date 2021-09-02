@@ -87,9 +87,11 @@ function siguiente() {
         // muestra en pantalla el reporte de correctas e incorrectas que se tuvo
 
          //incorrectas correctas y formulario (EN LAS BETTA)
-        espacioParaProblemas.innerHTML = "</br><button class='formulario'><a href='https://docs.google.com/forms/d/1papjH2epWCm04dx2Hh-BbKWcrOpr20NExaxgc6PS0BY/edit?usp=sharing' ><p class='textoformulario'>como fue tu experiencia?,</p><p class='textoformulario'>danos tu opinion¡</p></a></button>"+"<p>Tuviste <strong>" + correctas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + incorrectas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco +
+        espacioParaProblemas.innerHTML = "</br><button class='formulario' id='formulario'><a href='https://docs.google.com/forms/d/1papjH2epWCm04dx2Hh-BbKWcrOpr20NExaxgc6PS0BY/edit?usp=sharing' ><p class='textoformulario'>como fue tu experiencia?,</p><p class='textoformulario'>danos tu opinion¡</p></a></button>"+"<p>Tuviste <strong>" + correctas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + incorrectas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco +
         //boton del reporte
         "</strong> en blanco <i class='fas fa-circle'></i></p><button class='botondelreporte' id='reporte'>Ver Reporte Completo</button>";
+     if (tipo=="letras"){espacioParaProblemas.style.justifyContent="center";document.getElementsByClassName('formulario')[0].style.top="4em"};    
+        //algunas propiedades css
         botonReporte = document.getElementById('reporte') 
         botonReporte.addEventListener('click', verReporte) // activar el escuchador de Eventos para cuando presione "Ver Reporte"
         clearInterval(idTiempoParticular)
@@ -259,20 +261,24 @@ let reporte = document.getElementById('reporte')
 
 function verReporte() {
     container.style.display = 'none'
-
+    reporte.innerHTML=`<h1 class="tituloreporte">_-Reporte del examen-_</h1>`
     for(let i=1; i <= problemasElegidos.length-1; i++) {
         reporte.innerHTML += 
         `<div class="boxDeProblemaYSolucion">
             
             <div class="boxProblem material-placeholder"><img class="responsive-img materialboxed" src="${problemasElegidos[i].imgProblema}"></div>
            <div class="textodeenmedio">
-                <h2>Problema ${i} </h2>
-                <p>patata</p>
+                <p class="iconobuenamala"></p>
+                <h3>Problema ${i} </h3>
+                
+                <p class="estebannosabe"> ${ problemasElegidos[i].estado }</p>
            </div>
             <div class="boxSolucion material-placeholder"><img class="responsive-img materialboxed" src="${problemasElegidos[i].imgResolucion}" ></div>        
-        </div>` 
+        </div>`; 
+        if (problemasElegidos[i].estado=="correcto"){document.getElementsByClassName("iconobuenamala")[i-1].innerHTML="<i class='fas fa-check-circle icocirculo'></i>"} 
+        else if (problemasElegidos[i].estado=="incorrecto"){document.getElementsByClassName("iconobuenamala")[i-1].innerHTML="<i class='fas fa-times-circle icocirculo'></i>"} 
+        else{document.getElementsByClassName("iconobuenamala")[i-1].innerHTML="<i class='fas fa-circle icocirculo'></i>"}
     }   
-
     // document.addEventListener('DOMContentLoaded', () => {
         const imgLightBox = document.querySelectorAll('.materialboxed');
         M.Materialbox.init(imgLightBox, {
@@ -281,4 +287,4 @@ function verReporte() {
         });
     // });
     
-}
+} 
