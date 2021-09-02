@@ -29,8 +29,9 @@
      display: flex; 
      align-items: center;
      flex-direction: column;
-
+   
 }
+
 
 .botondelreporte {
     margin-top: 11.5px;
@@ -69,3 +70,5 @@
   user-select: none;
   color:rgb(20, 250, 181);
 }
+.icocirculo{position: relative;font-size: 2em;border:2px solid rgb(142 142 142 / 92%);border-radius: 100%;}
+.tituloreporte{text-decoration: underline;color:rgb(0, 71, 0);display:flex;justify-content: center;}
