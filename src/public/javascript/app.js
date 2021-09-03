@@ -264,10 +264,13 @@ function desHabilitarRadioButtons() {
 
 let container = document.getElementById('container')
 let reporte = document.getElementById('reporte')
-
+let numberLec 
 function verReporte() {
     container.style.display = 'none'
     reporte.innerHTML=`<h1 class="tituloreporte">_-Reporte del examen-_</h1>`
+    if(materia=="lectura") {
+        renderizarLectura(1)
+    }
     for(let i=1; i <= problemasElegidos.length-1; i++) {
         reporte.innerHTML += 
         `<div class="boxDeProblemaYSolucion ${tipo}">
@@ -284,6 +287,14 @@ function verReporte() {
         if (problemasElegidos[i].estado=="correcto"){document.getElementsByClassName("iconobuenamala")[i-1].innerHTML="<i class='fas fa-check-circle icocirculo'></i>"} 
         else if (problemasElegidos[i].estado=="incorrecto"){document.getElementsByClassName("iconobuenamala")[i-1].innerHTML="<i class='fas fa-times-circle icocirculo'></i>"} 
         else{document.getElementsByClassName("iconobuenamala")[i-1].innerHTML="<i class='fas fa-circle icocirculo'></i>"}
+
+        if(materia=="lectura") {
+            if(i!=problemasElegidos.length-1) { // Si esta en el ultimo problema ya no comparará con el siguiente problema
+                if(problemasElegidos[i].lectura != problemasElegidos[i+1].lectura) { 
+                    renderizarLectura(i+1)
+                }
+            }
+        }
     }   
         const imgLightBox = document.querySelectorAll('.materialboxed');
         M.Materialbox.init(imgLightBox, {
@@ -291,3 +302,13 @@ function verReporte() {
             outDuration: 500
         });    
 } 
+
+function renderizarLectura(parametroNumber) {
+    reporte.innerHTML += 
+    `<div class="boxDeLaLectura material-placeholder">
+        <div class="boxLectura">
+            <img class="responsive-img materialboxed" src="${problemasElegidos[parametroNumber].lectura}">
+        </div>
+    </div>
+    `
+}
