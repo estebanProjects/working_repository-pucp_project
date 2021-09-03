@@ -26,13 +26,13 @@
 
 .letras {
     height: 500px;
-    width: 850px;
+    width: 720px;
     flex-direction: column;
 }
 
 .letras div img {
-    height: 100px;
-    width: 525px;
+    /* height: 100px; */
+    /* width: 525px; */
 }
 
 /**/
@@ -64,9 +64,25 @@
     transform: scale(1.1);
  }
 
- .formulario{border: 3px rgb(2, 100, 192);border-radius: 5px;position: absolute;top:3em;border-style:solid double;max-width:40vh;width:40vh;}/*disponible en las betta*/
- .textoformulario:hover{background-color: rgb(81, 87, 90);}
- .textoformulario{ display: block;background-color: rgb(48, 48, 48);transition:2s}
+ .formulario{
+    border: 3px rgb(2, 100, 192);
+    border-radius: 5px;
+    position: absolute;
+    top:3em;
+    border-style:solid double;
+    max-width:40vh;
+    width:40vh;
+    transition: 0.85s;
+    background-color: rgb(48, 48, 48);
+ }/*disponible en las betta*/
+
+ .formulario:hover {
+    background-color: rgb(68, 72, 73);
+ }
+ 
+ .textoformulario { 
+    display: block;
+ }
 
  /*radio buttons*/
  [type="radio"]:not(:checked)+span, [type="radio"]:checked+span {
@@ -104,7 +120,7 @@
 }
 
 .boxLectura {
-    background-color: rgba(90, 146, 80, 0.849);
+    background-color: rgb(4, 170, 79);
     padding: 20px;
     border-radius: 15px;
 }

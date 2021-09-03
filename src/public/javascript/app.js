@@ -93,7 +93,7 @@ function siguiente() {
         // muestra en pantalla el reporte de correctas e incorrectas que se tuvo
 
          //incorrectas correctas y formulario (EN LAS BETTA)
-        espacioParaProblemas.innerHTML = "</br><button class='formulario' id='formulario'><a Target='_blank' href='https://docs.google.com/forms/d/1papjH2epWCm04dx2Hh-BbKWcrOpr20NExaxgc6PS0BY/edit?usp=sharing' ><p class='textoformulario'>como fue tu experiencia?,</p><p class='textoformulario'>danos tu opinion¡</p></a></button>"+"<p>Tuviste <strong>" + correctas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + incorrectas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco +
+        espacioParaProblemas.innerHTML = "</br><button class='formulario' id='formulario'><a Target='_blank' href='https://docs.google.com/forms/d/1papjH2epWCm04dx2Hh-BbKWcrOpr20NExaxgc6PS0BY/edit?usp=sharing' ><p class='textoformulario'>¿Cómo fue tu experiencia?,</p><p class='textoformulario'>¡Danos tu opinión!</p></a></button>"+"<p>Tuviste <strong>" + correctas + "</strong> correctas <i class='fas fa-check-circle'></i></p>" + "<p>Tuviste <strong>" + incorrectas + "</strong> incorrectas <i class='fas fa-times-circle'></i></p>" + "<p>Dejaste <strong>" + blanco +
         //boton del reporte
         "</strong> en blanco <i class='fas fa-circle'></i></p><button class='botondelreporte' id='reporte'>Ver Reporte Completo</button>";
      if (tipo=="letras"){espacioParaProblemas.style.justifyContent="center";document.getElementsByClassName('formulario')[0].style.top="4em"};    
