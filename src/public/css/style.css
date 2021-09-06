@@ -323,7 +323,7 @@ h2 {
  /*tiempo general y particular------*/
     .contenedordelostime{position: absolute;left: 79%;display:flex;top:0em;color: rgb(0, 255, 255);    font-family: 'Roboto', sans-serif;
         ;
-    margin-top: 20px;
+    margin-top: 8px;
     }
     .indicador-tiempo{position: relative;z-index:3;font-size: 1.5rem; font-family: 'Roboto', sans-serif;    }
 
