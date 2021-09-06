@@ -67,7 +67,7 @@ let problemas_lectura = [textoA, textoB, textoC]
 let problemasSeleccionados = []
 let numeroAleatorio
 
-let cantidadDeTextos = 2
+let cantidadDeTextos = 3
 
 
 problemasSeleccionadosDelRepertorio(cantidadDeTextos)

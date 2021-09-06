@@ -72,12 +72,12 @@ let arrayProblemasPucp = [{ // ARITMETICA // 1
     imgResolucion: "https://www.dropbox.com/s/hmrw7tu9aaev0u8/arit_resolucion9.jpg?dl=0",
     curso: 'aritmetica'
 },{//10
-    imgProblema: "",
+    imgProblema: "https://www.dropbox.com/s/1528xk6pqdel5dk/arit_problema10.jpg?dl=0",
     respuesta: "d",
     alternativaDelUsuario: "",
     estado: "",
     radioButtonDeshabilitado: false,
-    imgResolucion: "",
+    imgResolucion: "https://www.dropbox.com/s/rilbykafgmsea69/arit_resolucion10.jpg?dl=0",
     curso: 'aritmetica'
 },{//11
     imgProblema: "https://www.dropbox.com/s/0trq35utnlcbind/arit_problema11.jpg?dl=0",
@@ -360,7 +360,7 @@ let arrayProblemasPucp = [{ // ARITMETICA // 1
     imgResolucion: "https://www.dropbox.com/s/18a1te8ks7b9smh/alg_resolucion15.jpg?dl=0",
     curso: 'algebra'
 },{//16
-    imgProblema: "https://www.dropbox.com/s/wdxw4ow3vbungqg/alg_problema16.jpg?dl=0",
+    imgProblema: "https://www.dropbox.com/s/wdxw4ow3vbungqg/alg_problema16.jpg?dl=0", // change
     respuesta: "a",
     alternativaDelUsuario: "",
     estado: "",
@@ -733,12 +733,12 @@ let numeroAleatorio
 let cantidadDeEjercicios 
 
 if(materia == 'aritmetica' || materia == 'algebra' || materia == 'geometria') {
-    cantidadDeEjercicios = 7
+    cantidadDeEjercicios = 5
     arrayProblemasPucp = arrayProblemasPucp.filter(problema => problema.curso == materia)
     problemasSeleccionadosDelRepertorio(cantidadDeEjercicios)
     agregandoElElementoNeutro()
 } else if(materia == 'matematica'){
-    cantidadDeEjercicios = 7
+    cantidadDeEjercicios = 25
     problemasSeleccionadosDelRepertorio(cantidadDeEjercicios)
     agregandoElElementoNeutro()
 }
