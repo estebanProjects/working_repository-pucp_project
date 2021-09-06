@@ -273,7 +273,7 @@ function verReporte() {
     }
     for(let i=1; i <= problemasElegidos.length-1; i++) {
         reporte.innerHTML += 
-        `<div class="boxDeProblemaYSolucion ${tipo}">
+        `<div class="boxDeProblemaYSolucion ${tipo} ">
             
             <div class="boxProblem material-placeholder"><img class="responsive-img materialboxed" src="${problemasElegidos[i].imgProblema}"></div>
            <div class="textoDeEnMedio">
