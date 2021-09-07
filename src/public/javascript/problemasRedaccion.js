@@ -29,7 +29,7 @@ let arrayProblemasPucp = [{
 let problemasSeleccionados = []
 let numeroAleatorio
 
-let cantidadDeEjercicios = 3
+let cantidadDeEjercicios = 6
 
 // variable del tiempo para redaccion
 let cantidadMinutosParticular = 0
