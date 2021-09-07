@@ -1,5 +1,6 @@
 // Redaccion
 
+
 let arrayProblemasPucp = [{
     imgProblema: "https://www.dl.dropboxusercontent.com/s/5imbu57nob276yi/proble1.PNG?dl=0",
     respuesta: "d",
