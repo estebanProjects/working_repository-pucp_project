@@ -1,3 +1,5 @@
+// JAJA
+
 
 let arrayProblemasPucp = [{ // ARITMETICA // 1
     imgProblema: "https://www.dropbox.com/s/1np9m5htupyxarg/arit_problema1.png?dl=0",
