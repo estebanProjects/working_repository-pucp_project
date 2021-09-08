@@ -25,16 +25,22 @@
 /**/
 
 .letras {
-    height: 500px;
+    min-height: 460px;
     width: 660px;
     flex-direction: column;
     transition:1s;
+    padding-top:20px;
+    padding-bottom:20px;
 }
 .letras:hover {
     border:rgb(40 128 87)  1em solid;
 }
 
-
+.letras div img {
+    max-height: 70em;
+    max-width: 50em;
+    cursor: zoom-in;
+}
 /**/
 
 .boxDeProblemaYSolucion div img:hover {  
@@ -46,7 +52,7 @@
      display: flex; 
      align-items: center;
      flex-direction: column;
-   
+     margin-top: 3px;
 }
 
 
