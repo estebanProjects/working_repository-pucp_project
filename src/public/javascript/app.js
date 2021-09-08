@@ -79,6 +79,24 @@ function siguiente() {
         apretadoComprobar = false
         // modificar el indicador del problemaActual
         indicadorDelProblemaActual.innerHTML = numeroDelProblemaActual
+
+        if(problemasElegidos[numeroDelProblemaActual].radioButtonDeshabilitado == false) {
+            botonComprobar.innerHTML = 'Comprobar'
+            botonComprobar.style.backgroundColor = 'black'
+            espacioParaCorreccion.innerHTML = "Corrección"
+            espacioParaSolucion.innerHTML = "Solución"
+        } else {
+            botonComprobar.innerHTML = 'Comprobado'
+            botonComprobar.style.backgroundColor = 'rgb(63, 62, 62)'
+            if(problemasElegidos[numeroDelProblemaActual].estado == 'correcto') {
+                espacioParaCorreccion.innerHTML = "<p class='respuestaCorrecta'>¡Correcto!</p>" + "<button id='mostrarSolucion'> Ver solución </button>"
+                activarFuncionMostrarSolucion()
+            } else {
+                espacioParaCorreccion.innerHTML = "<p class='respuestaIncorrecta'>¡Incorrecto!</p>" + "<button id='mostrarSolucion'> Ver solución </button>"
+                activarFuncionMostrarSolucion()
+            }
+            espacioParaSolucion.innerHTML = "Solución"
+        }
     } else {
         console.log("¡Terminaste!")
         espacioParaTiempoParticular.innerHTML = "¡Terminaste!"
@@ -103,7 +121,8 @@ function siguiente() {
         clearInterval(idTiempoParticular)
         clearInterval(idTiempoGeneral)
     }
-    limpiarPantalla()
+    espacioParaCorreccion.innerHTML = "Corrección"
+    espacioParaSolucion.innerHTML = "Solución"
     document.getElementsByClassName("time")[0].style.backgroundColor = "rgb(82, 190, 61)";
 }
 
@@ -128,8 +147,25 @@ function retroceder() {
         apretadoComprobar = false
         // modificar el indicador del problemaActual
         indicadorDelProblemaActual.innerHTML = numeroDelProblemaActual
+
+        if(problemasElegidos[numeroDelProblemaActual].radioButtonDeshabilitado == false) {
+            botonComprobar.innerHTML = 'Comprobar'
+            botonComprobar.style.backgroundColor = 'black'
+            espacioParaCorreccion.innerHTML = "Corrección"
+            espacioParaSolucion.innerHTML = "Solución"
+        } else {
+            botonComprobar.innerHTML = 'Comprobado'
+            botonComprobar.style.backgroundColor = 'rgb(63, 62, 62)'
+            if(problemasElegidos[numeroDelProblemaActual].estado == 'correcto') {
+                espacioParaCorreccion.innerHTML = "<p class='respuestaCorrecta'>¡Correcto!</p>" + "<button id='mostrarSolucion'> Ver solución </button>"
+                activarFuncionMostrarSolucion()
+            } else {
+                espacioParaCorreccion.innerHTML = "<p class='respuestaIncorrecta'>¡Incorrecto!</p>" + "<button id='mostrarSolucion'> Ver solución </button>"
+                activarFuncionMostrarSolucion()
+            }
+            espacioParaSolucion.innerHTML = "Solución"
+        }
     }
-    limpiarPantalla()
 }
 
 function comprobar() {
@@ -148,6 +184,8 @@ function comprobar() {
 
     // deshabilitando los radio buttons
     problemasElegidos[numeroDelProblemaActual].radioButtonDeshabilitado = true 
+    botonComprobar.innerHTML = "Comprobado"
+    botonComprobar.style.backgroundColor = 'rgb(63, 62, 62)'
     estadoHabilitadoODeshabilitadoRadioButtons()
 
     clearInterval(idTiempoParticular) // parando el tiempo particular
@@ -247,10 +285,6 @@ function contadorDeCorrectasIncorrectas() {
         }
 }
 
-function limpiarPantalla() {
-    espacioParaCorreccion.innerHTML = "Corrección"
-    espacioParaSolucion.innerHTML = "Solución"
-}
 
 function desHabilitarRadioButtons() {
     for(let i=0; i<alternativas.length; i++) {
