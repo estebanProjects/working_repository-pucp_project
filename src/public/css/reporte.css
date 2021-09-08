@@ -26,8 +26,12 @@
 
 .letras {
     height: 500px;
-    width: 720px;
+    width: 660px;
     flex-direction: column;
+    transition:1s;
+}
+.letras:hover {
+    border:rgb(40 128 87)  1em solid;
 }
 
 
