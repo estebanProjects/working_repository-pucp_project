@@ -243,7 +243,7 @@ let textoH = [{
     alternativaDelUsuario: "",
     estado: "", // correcto o incorrecto
     radioButtonDeshabilitado: false,
-    imgResolucion: "https://www.dropbox.com/s/msdvutcfywfdz9a/lectura8-rel1.PNG?dl=0",
+    imgResolucion: "https://www.dl.dropboxusercontent.com/s/msdvutcfywfdz9a/lectura8-rel1.PNG?dl=0",
     curso: 'lectura'
 },{
     lectura:"https://www.dl.dropboxusercontent.com/s/v6qa2nwakchv7b3/lectura8.PNG?dl=0",
