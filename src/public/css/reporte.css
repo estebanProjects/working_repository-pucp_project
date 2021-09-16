@@ -82,6 +82,22 @@
     background-color: rgb(48, 48, 48);
  }/*disponible en las betta*/
 
+ .formulario-reporte{
+    border: 5px rgb(49, 92, 133);
+    display:block;
+    border-radius: 5px;
+    align-items:center;
+    margin-bottom:2em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style:solid double;
+    max-width:60vh;
+    width:60vh;
+   font-size: 1.5em;
+    transition: 0.85s;
+    background-color: rgb(48, 48, 48);
+ }/*disponible en las betta*/
+ 
  .formulario:hover {
     background-color: rgb(68, 72, 73);
  }
@@ -143,3 +159,19 @@
 }
 .boxLectura:hover{border-right:rgb(0, 219, 128)  1.6em double;
     border-left:rgb(0, 219, 128)  1.6em solid;}
+
+    h1 {
+        font-family: 'open-sans'; 
+      }
+      #img_list {
+        background-color: #ccc;
+        min-width: 100%;
+        min-height: 50px;
+      }
+      #img_list li {
+          list-style-type: none;
+          display: inline;
+      }
+      #img_list img {
+          max-width: 200px;
+      }

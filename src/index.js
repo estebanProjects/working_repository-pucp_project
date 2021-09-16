@@ -8,7 +8,17 @@ const path = require('path');
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
-
+/*require('isomorphic-fetch'); // or another library of choice.
+var Dropbox = require('dropbox').Dropbox;
+var dbx = new Dropbox({ accessToken: 'pl8T020wcoEAAAAAAAAAAWcfHiPx7gZGA6lWdiLcFms-ZEygVEzVPVtWb5fmPWKd' });
+dbx.usersGetCurrentAccount()
+  .then(function(response) {
+    console.log(response);
+  })
+  .catch(function(error) {
+    console.error(error);
+  });
+  ESO DE ARRIBA ES PARA DROPBOX */   
 // middleware
 
 // routes

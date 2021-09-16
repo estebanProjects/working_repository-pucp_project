@@ -334,10 +334,9 @@ function verReporte() {
         M.Materialbox.init(imgLightBox, {
             inDuration: 500,
             outDuration: 500
-        });    
-
-        // formulario
-        reporte.innerHTML += "<button class='formulario' id='formulario'><a Target='_blank' href='https://docs.google.com/forms/d/1papjH2epWCm04dx2Hh-BbKWcrOpr20NExaxgc6PS0BY/edit?usp=sharing' ><p class='textoformulario'>¿Cómo fue tu experiencia?,</p><p class='textoformulario'>¡Danos tu opinión!</p></a></button>"
+        });   
+       //formulario
+       reporte.innerHTML +=  "</br><button class='formulario-reporte' id='formulario'><a Target='_blank' href='https://docs.google.com/forms/d/1papjH2epWCm04dx2Hh-BbKWcrOpr20NExaxgc6PS0BY/edit?usp=sharing' ><p class='textoformulario'>¿Cómo fue tu experiencia?,</p><p class='textoformulario'>¡Danos tu opinión!</p></a></button>" 
 } 
 
 function renderizarLectura(parametroNumber) {
