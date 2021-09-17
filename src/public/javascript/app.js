@@ -102,6 +102,8 @@ function siguiente() {
         espacioParaTiempoParticular.innerHTML = "¡Terminaste!"
         espacioParaTiempoGeneral.innerHTML = "¡Terminaste!"
 
+        botonComprobar.innerHTML = 'Comprobar'
+        botonComprobar.style.backgroundColor = 'rgb(63, 62, 62)'
         contadorDeCorrectasIncorrectas() 
         // deshabilitar los botones de avanzar, retroceder y de comprobar
         botonRetroceder.disabled = true
