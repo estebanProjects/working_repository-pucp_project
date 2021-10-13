@@ -102,6 +102,8 @@ function siguiente() {
         espacioParaTiempoParticular.innerHTML = "¡Terminaste!"
         espacioParaTiempoGeneral.innerHTML = "¡Terminaste!"
 
+        botonComprobar.innerHTML = 'Comprobar'
+        botonComprobar.style.backgroundColor = 'rgb(63, 62, 62)'
         contadorDeCorrectasIncorrectas() 
         // deshabilitar los botones de avanzar, retroceder y de comprobar
         botonRetroceder.disabled = true
@@ -317,7 +319,9 @@ function verReporte() {
                 <p class="estadoDelProblemaWord"> ${ problemasElegidos[i].estado }</p>
            </div>
             <div class="boxSolucion material-placeholder"><img class="responsive-img materialboxed" src="${problemasElegidos[i].imgResolucion}" ></div>        
-        </div>`; 
+        </div>`;
+  
+    
         if (problemasElegidos[i].estado=="correcto"){document.getElementsByClassName("iconobuenamala")[i-1].innerHTML="<i class='fas fa-check-circle icocirculo'></i>"} 
         else if (problemasElegidos[i].estado=="incorrecto"){document.getElementsByClassName("iconobuenamala")[i-1].innerHTML="<i class='fas fa-times-circle icocirculo'></i>"} 
         else{document.getElementsByClassName("iconobuenamala")[i-1].innerHTML="<i class='fas fa-circle icocirculo'></i>"}
@@ -338,8 +342,8 @@ function verReporte() {
             inDuration: 500,
             outDuration: 500
         });   
-       
-      
+       //formulario
+    //    reporte.innerHTML +=  "</br><button class='formulario-reporte' id='formulario'><a Target='_blank' href='https://docs.google.com/forms/d/1papjH2epWCm04dx2Hh-BbKWcrOpr20NExaxgc6PS0BY/edit?usp=sharing' ><p class='textoformulario'>¿Cómo fue tu experiencia?,</p><p class='textoformulario'>¡Danos tu opinión!</p></a></button>" 
 } 
 
 function renderizarLectura(parametroNumber) {
