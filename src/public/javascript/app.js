@@ -285,6 +285,13 @@ function contadorDeCorrectasIncorrectas() {
                 incorrectas++
             }
         }
+        soloUnaVezDelContadorFinal = false
+    }
+
+
+function limpiarPantalla() {
+    espacioParaCorreccion.innerHTML = "Corrección"
+    espacioParaSolucion.innerHTML = "Solución"
 }
 
 
