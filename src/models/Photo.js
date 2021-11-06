@@ -5,8 +5,15 @@ const Photo = new Schema({
     description: String,
     imageURL: String,
     public_id: String,
-  //  resolURL:String,//prueba
+    resolURL:String,//prueba
+    curso:String,
+    respuesta:String,
+    radioButtonDeshabilitado: Boolean,
+    estado:String,
+    alternativaDelUsuario:String,
     
+
+
 });
 
 module.exports = model('Photo', Photo);

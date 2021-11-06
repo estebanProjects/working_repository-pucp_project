@@ -20,33 +20,73 @@ const fs = require('fs-extra');
 
 router.get('/images', async (req, res) => {
     const photos = await Photo.find().lean();
-    
     res.render('images.hbs', {photos});
-    
+       
 });
 
 router.get('/images/add', async (req, res) => {
     const photos = await Photo.find().lean();
     res.render('image_form.hbs', {photos});
+   
     
 });
-
+problemimage=""
+cursoaguardarelegido=""
 router.post('/images/add', async (req, res) => {
     const { title, description } = req.body;
+    const { addresolution} = req.body;
+    const { isresolution }=req.body;
+    const { cursoaguardar }=req.body;
+    const { respuesta} = req.body;
     // Saving Image in Cloudinary
+    cursoaguardarelegido=cursoaguardar;
+    
     try {
-        const result = await cloudinary.v2.uploader.upload(req.file.path,{folder:"/catolica"});
+        var usefolder=""
+        if(isresolution=="true"){usefolder="/catolica/"+cursoaguardarelegido+"/resolucion"}
+        else{  usefolder="/catolica/"+cursoaguardarelegido+"/problemas" };
+
+        const result = await cloudinary.v2.uploader.upload(req.file.path,{folder: usefolder});
         //en folder tu eliges a que ruta guardarlo
-        const newPhoto = new Photo({title, description, imageURL: result.url, public_id: result.public_id});
-       //aca podrias usar imageurl para guardar la resolucion del problema
+     
+    
+        const newPhoto = new Photo({title, description, imageURL: result.url, public_id: result.public_id,resolURL:"",curso:cursoaguardarelegido,respuesta,radioButtonDeshabilitado:false,estado:"",alternativaDelUsuario:"",});
+       
+        console.log( await Photo.findById(problemimage._id) );
+      
         await newPhoto.save();
+       // let fotodatabase =await Photo.find().lean().clone();
+       // let encajarurl=  fotodatabase.find(fotodatabase => fotodatabase.title === "shakshukaa1");
+      ;
+      if(isresolution=="true"){
+        
+        await Photo.updateOne({public_id: problemimage.public_id }, {
+            resolURL:result.url,
+          });
+
+          console.log( await Photo.findById(problemimage._id));
+    }
+      else{problemimage= newPhoto; console.log(problemimage)};
+        
         await fs.unlink(req.file.path);
+    
+    //cambios arriba
     } catch (e) {
         console.log(e)
     }
-    res.redirect('/images');
-});
+    console.log(addresolution);
+    if(addresolution=="true"){res.redirect('/images/add/resolution')}
+    else{
+        res.redirect('/images');
+    }
+    
+}
+);
+router.get('/images/add/resolution', async (req, res) => {
+    res.render('resolutionform.hbs');
 
+
+});
 router.get('/images/delete/:photo_id', async (req, res) => {
     const { photo_id } = req.params;
     const photo = await Photo.findByIdAndRemove(photo_id);

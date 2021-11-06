@@ -1,5 +1,9 @@
 
-let arrayProblemasPucp = [{ // ARITMETICA // 1
+
+let arrayProblemasPucp = problemas.algebra.concat(problemas.geometria, problemas.trigonometria,problemas.aritmetica);
+
+/*
+[{ // ARITMETICA // 1
     imgProblema: "https://www.dropbox.com/s/1np9m5htupyxarg/arit_problema1.png?dl=0",
     respuesta: "d",
     alternativaDelUsuario: "",
@@ -720,7 +724,9 @@ let arrayProblemasPucp = [{ // ARITMETICA // 1
     imgResolucion: "https://www.dropbox.com/s/h4rk0vnrdbf93ek/geo_resolucion30.jpg?dl=0",
     curso: 'geometria'
 }
-]
+]*/
+
+console.log(arrayProblemasPucp);
 
 for(let i=0; i<arrayProblemasPucp.length; i++) {
     arrayProblemasPucp[i].imgProblema = dropboxUrl(arrayProblemasPucp[i].imgProblema)

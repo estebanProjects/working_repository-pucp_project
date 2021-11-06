@@ -29,9 +29,12 @@ const storage = multer.diskStorage({
         cb(null, new Date().getTime() + path.extname(file.originalname));
     }
 });
+var upload = multer({ storage: storage })
 app.use(multer({storage}).single('image'));
+
 
 // Routes
 app.use(require('./routes'));
+
 
 module.exports = app; 
