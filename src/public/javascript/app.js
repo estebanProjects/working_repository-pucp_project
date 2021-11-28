@@ -20,6 +20,7 @@ let idTiempoGeneral
 
 // variables internas - propio del Javascript
 let problemasElegidos = problemasSeleccionados; 
+console.log(problemasElegidos)
 let numeroDelProblemaActual = 0
 let rpta
 let mostrarSolucion
@@ -285,6 +286,13 @@ function contadorDeCorrectasIncorrectas() {
                 incorrectas++
             }
         }
+        soloUnaVezDelContadorFinal = false
+    }
+
+
+function limpiarPantalla() {
+    espacioParaCorreccion.innerHTML = "Corrección"
+    espacioParaSolucion.innerHTML = "Solución"
 }
 
 
@@ -334,9 +342,10 @@ function verReporte() {
             }
         }
     }   
-    reporte.innerHTML +=  "</br><button class='formulario-reporte' id='formulario'><a Target='_blank' href='https://docs.google.com/forms/d/1papjH2epWCm04dx2Hh-BbKWcrOpr20NExaxgc6PS0BY/edit?usp=sharing' ><p class='textoformulario'>¿Cómo fue tu experiencia?,</p><p class='textoformulario'>¡Danos tu opinión!</p></a></button>" 
-
-        const imgLightBox = document.querySelectorAll('.materialboxed');
+   //formulario
+    reporte.innerHTML +=  "</br><button class='formulario-reporte' id='formulario'><a Target='_blank' href='https://docs.google.com/forms/d/1papjH2epWCm04dx2Hh-BbKWcrOpr20NExaxgc6PS0BY/edit?usp=sharing' ><p class='textoformulario'>¿Cómo fue tu experiencia?,</p><p class='textoformulario'>¡Danos tu opinión!</p></a></button>" ;
+  
+    const imgLightBox = document.querySelectorAll('.materialboxed');
         M.Materialbox.init(imgLightBox, {
             inDuration: 500,
             outDuration: 500
