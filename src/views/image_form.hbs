@@ -45,6 +45,7 @@
         </div>
     </div>
     <div class="col-md-8">
+    
         <table class="table">
             <thead>
                 <tr>
@@ -59,10 +60,10 @@
                     <td>{{title}}</td>
                     <td>{{description}}</td>
                     <td>
-                        <a href="{{imageURL}}" target="_blank" class="btn btn-primary">View </a>
+                        <a href="{{url}}" target="_blank" class="btn btn-primary">View </a>
                        <!-- <a id="resolutionboton"></a>
                         <script>if (resolURL = 0){document.getElementById("resolutionboton").innerHTML="resolution"}</script> -->
-                        <a href="/images/delete/{{_id}}" class="btn btn-danger">Delete</a>
+                        <a href="/images/delete/{{asset_id}}" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
                 {{/each}}
