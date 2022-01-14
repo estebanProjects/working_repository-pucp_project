@@ -18,8 +18,45 @@ let cantidadMinutosParticular = 2
 let cantidadSegundosParticular = 0
 let minutosParticular = cantidadMinutosParticular
 let segundosParticular = cantidadSegundosParticular
-let minutosGeneral = arrayProblemasPucp.length*2
+let minutosGeneral = problemasSeleccionados.length*2
 let segundosGeneral = 0
+
+// Opciones de la petición (valores por defecto)
+const options = {
+    method: "GET"
+};
+let datas 
+// Petición HTTP
+
+fetch("/api/cursos", options)
+.then(response => response.text())
+.then(data => {
+    console.log(JSON.parse(data))
+    datas = JSON.parse(data)
+    arrayProblemasPucp = datas
+    console.log(arrayProblemasPucp)
+
+
+
+    if(materia == 'aritmetica' || materia == 'algebra' || materia == 'geometria') {
+        console.log(arrayProblemasPucp)
+        problemasSeleccionados = arrayProblemasPucp.filter(problema => problema.curso == materia)
+        console.log(problemasSeleccionados)
+        mezclarArray(problemasSeleccionados)
+        agregandoElElementoNeutro()
+    } else if(materia == 'matematica'){
+        mezclarArray(problemasSeleccionados)
+        agregandoElElementoNeutro()
+    }
+    
+    // variable del tiempo para matematica
+    /** Procesar los datos **/
+});
+
+
+
+
+
 
 // funciones
 function mezclarArray(inputArray){ // funcion para aleatorizar los problemas
@@ -34,7 +71,7 @@ function problemasSeleccionadosDelRepertorio(cantidadDeEjercicios) {
 }
 
 function agregandoElElementoNeutro() {
-    arrayProblemasPucp.unshift({  // agregando un elemento con atributos neutro al inicio del array
+    problemasSeleccionados.unshift({  // agregando un elemento con atributos neutro al inicio del array
         respuesta: "neutro",
         estado: "neutro",
         alternativaDelUsuario: "neutro",})

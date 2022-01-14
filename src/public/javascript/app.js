@@ -20,6 +20,7 @@ let idTiempoGeneral
 
 // variables internas - propio del Javascript
 let problemasElegidos = problemasSeleccionados; 
+console.log(problemasElegidos)
 let numeroDelProblemaActual = 0
 let rpta
 let mostrarSolucion
