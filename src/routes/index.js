@@ -151,6 +151,21 @@ router.get('/geometria',async (req, res) => {
 });
 
 router.get('/matematica',async (req, res) => {
+    await buscarproblemas("catolica/matematica/algebra/problemas")
+    let a=[]
+    a= searchproblemas
+
+    await buscarproblemas("catolica/matematica/aritmetica/problemas")
+    let b=[]
+    b= searchproblemas
+    
+    await buscarproblemas("catolica/matematica/geometria/problemas")
+    let c=[]
+    c= searchproblemas
+
+    a.concat(b).concat(c)
+
+
     res.render('../views/ciencias/matematica.html', {title: 'Preguntas Matematica'});    
 });
 
