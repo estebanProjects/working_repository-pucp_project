@@ -9,7 +9,7 @@ let espacioParaSolucion = document.getElementById('espacioParaSolucion')
 let espacioParaProblemas = document.getElementById('espacioParaProblemas')
 let espacioParaCorreccion = document.getElementById('espacioParaCorreccion')
 let radioButtons = document.getElementById('radioButtons')
-let alternativas = document.getElementsByName('alternativa')
+let alternativas = document.getElementsByName('alternativa')    
 
 let indicadorDeEjercicios = document.getElementById('indicadorDeEjercicios')
 let indicadorDelProblemaActual = document.getElementById('indicadorDelProblemaActual')
@@ -58,7 +58,6 @@ function empezar() {
     botonSiguiente.disabled = false
     siguiente()
 }
-
 
 function siguiente() {
     obtenerDatosDelProblema()
@@ -196,12 +195,12 @@ function comprobar() {
 }
 
 function funcionMostrarSolucion() {
-    let imagenDeLaSolucion = problemasElegidos[numeroDelProblemaActual].imgResolucion // direccion de la imagen de la solucion
+    let imagenDeLaSolucion = problemasElegidos[numeroDelProblemaActual].resolURL // direccion de la imagen de la solucion
     espacioParaSolucion.innerHTML = "<img class='tamañoDeLaImagenDeLaSolucion"+tipo+"' src='" + imagenDeLaSolucion + "'>"
 } 
 // funciones auxiliares
 function renderizarImagenDelProblema() {
-    let imagenDelProblema = problemasElegidos[numeroDelProblemaActual].imgProblema // direccion de la imagen del problema
+    let imagenDelProblema = problemasElegidos[numeroDelProblemaActual].url // direccion de la imagen del problema
     let texto=problemasElegidos[numeroDelProblemaActual].lectura
      if (materia == 'lectura'){
      espacioParaProblemas.innerHTML = "<img class='texto' src='" + texto + "'><img class='tamañoDeLaImagenDelProblema"+tipo+"' src='" + imagenDelProblema + "'>";
@@ -319,14 +318,14 @@ function verReporte() {
         reporte.innerHTML += 
         `<div class="boxDeProblemaYSolucion ${tipo} ">
             
-            <div class="boxProblem material-placeholder"><img class="responsive-img materialboxed" src="${problemasElegidos[i].imgProblema}"></div>
+            <div class="boxProblem material-placeholder"><img class="responsive-img materialboxed" src="${problemasElegidos[i].url}"></div>
            <div class="textoDeEnMedio">
                 <p class="iconobuenamala"></p>
                 <h3>Problema ${i} </h3>
                 
                 <p class="estadoDelProblemaWord"> ${ problemasElegidos[i].estado }</p>
            </div>
-            <div class="boxSolucion material-placeholder"><img class="responsive-img materialboxed" src="${problemasElegidos[i].imgResolucion}" ></div>        
+            <div class="boxSolucion material-placeholder"><img class="responsive-img materialboxed" src="${problemasElegidos[i].resolURL}" ></div>        
         </div>`;
   
     

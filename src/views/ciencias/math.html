@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
     <p id="stringproblemas" style="display: none" ><%= JSON.stringify(searchproblemas)  %></p> 
+    <p style="display: none;"><span id="curso"><%= matr %></span><span id="tipo"><%= tip %></span></p>
     <%- include('../partials/head.html') %>
     <script> 
     var problemas=JSON.parse(document.getElementById("stringproblemas").innerHTML)
@@ -17,8 +18,9 @@
     <%- include('../partials/estructura-principal-ciencias.html') %>
     
     <script>
-        let materia = 'algebra'
-        let tipo ='ciencias'
+        let materia = document.getElementById('curso').innerHTML
+        let tipo = document.getElementById('tipo').innerHTML
+        console.log(materia, tipo)
     </script>
     <%- include('../partials/linkcss.html') %>
     <%- include('../partials/linkProblemas/linkProblemasMatematica.html') %>

@@ -27,7 +27,7 @@ async function buscarproblemas(folder){
       tags:true,
       max_results: 500,},
     function(error, result) {console.log(result.resources.length);searchproblemas=result.resources; });
-
+        console.log(searchproblemas, "Hallo")
     for (i=0;i<searchproblemas.length;i++){
         for(j=0;j<searchproblemas[i].tags.length;j++)  {
                let titleindex=searchproblemas[i].tags[j].indexOf("title/")
@@ -49,13 +49,6 @@ router.get('/images', async (req, res) => {
     await buscarproblemas("catolica/matematica/algebra/problemas")
     const photos = searchproblemas
     res.render('images.hbs', {photos});
-    
-    
-    
-     
-
-  
-  
 
 });
 
@@ -97,11 +90,6 @@ router.post('/images/add', async (req, res) => {
         if(isresolution=="true"){let resolURL ;
             const resultreso = await cloudinary.v2.uploader.upload(req.file.path,{ tags:["respuesta/" + respuesta,"curso/" +cursoaguardarelegido,"title/" + title,"description/"+ description,],folder: usefolder}).then((result)=>{console.log("success",JSON.stringify(result,null,2),resolURL=result.url)});
             cloudinary.v2.uploader.add_tag("resolURL/"+ resolURL,problemimageprov,  function(error, result) { console.log(result, error) });}
-    
-        
-       
-   
-      
         ;
 
     } catch (e) {
@@ -137,36 +125,39 @@ router.get('/',async (req, res) => {
 });
 
 router.get('/aritmetica',async (req, res) => {
-    res.render('../views/ciencias/aritmetica.html', {title: 'Preguntas Aritmetica'});    
+    await buscarproblemas("catolica/matematica/arimetica/problemas")
+    res.render('../views/ciencias/math.html', {title: 'Preguntas Aritmetica', matr: 'arimetica', tip: 'ciencias'});    
 });
 
 router.get('/algebra',async (req, res) => {
     await buscarproblemas("catolica/matematica/algebra/problemas")
     console.log(searchproblemas)
-    res.render('../views/ciencias/algebra.html', {title: 'Preguntas Algebra'});    
-});
+    res.render('../views/ciencias/math.html', {title: 'Preguntas Algebra', matr: 'algebra', tip: 'ciencias'});    
+}); 
 
 router.get('/geometria',async (req, res) => {
-    res.render('../views/ciencias/geometria.html', {title: 'Preguntas Geometria'});    
+    await buscarproblemas("catolica/matematica/geometria/problemas")
+    res.render('../views/ciencias/math.html', {title: 'Preguntas Geometria', matr: 'geometria', tip: 'ciencias'});    
 });
 
 router.get('/matematica',async (req, res) => {
     await buscarproblemas("catolica/matematica/algebra/problemas")
-    let a=[]
-    a= searchproblemas
+    let a = []
+    a = searchproblemas
 
-    await buscarproblemas("catolica/matematica/aritmetica/problemas")
-    let b=[]
-    b= searchproblemas
-    
+    await buscarproblemas("catolica/matematica/arimetica/problemas")
+    let b = []
+    b = searchproblemas
+
     await buscarproblemas("catolica/matematica/geometria/problemas")
-    let c=[]
-    c= searchproblemas
+    let c = []
+    c = searchproblemas
 
-    a.concat(b).concat(c)
+    a = a.concat(b).concat(c)
 
+    searchproblemas = a
 
-    res.render('../views/ciencias/matematica.html', {title: 'Preguntas Matematica'});    
+    res.render('../views/ciencias/math.html', {title: 'Preguntas Matematica', matr: 'matematica', tip: 'ciencias'});    
 });
 
 router.get('/redaccion',async (req, res) => {

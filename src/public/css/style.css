@@ -152,6 +152,8 @@ h2 {
         
     }
 
+<<<<<<< HEAD
+=======
     .botones_abajo_mas_indicador {
         display: flex;
         align-items: center;
@@ -168,6 +170,7 @@ h2 {
         margin: 3px;
     }
 
+>>>>>>> 422ffe33878dbab82b559b6c73906884c1290894
 
 /*---------------------------------------------------------LETRAS-------------------------------------*/
 .correccion-letras {       /*espacio para la correccion de letras*/
