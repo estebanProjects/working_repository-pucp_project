@@ -1,0 +1,177 @@
+/*img's*/
+
+.boxDeProblemaYSolucion {
+    background-color: rgb(4, 170, 79);
+    border-radius:32px;
+    border: 1em solid rgba(17, 88, 17, 0.877);
+    margin: 30px auto;
+    display: flex;
+    transform:10s;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.ciencias  {
+    height: 350px;
+    width: 740px;
+}
+
+.ciencias div img {
+    height: 250px;
+    width: 250px;
+    cursor: zoom-in;
+}
+
+/**/
+
+.letras {
+    min-height: 460px;
+    width: 660px;
+    flex-direction: column;
+    transition:1s;
+    padding-top:20px;
+    padding-bottom:20px;
+}
+.letras:hover {
+    border:rgb(40 128 87)  1em solid;
+}
+
+.letras div img {
+    max-height: 70em;
+    max-width: 50em;
+    cursor: zoom-in;
+}
+/**/
+
+.boxDeProblemaYSolucion div img:hover {  
+   border: 3px solid rgba(255, 255, 0, 0.973);
+}
+
+
+.textoDeEnMedio{   
+     display: flex; 
+     align-items: center;
+     flex-direction: column;
+     margin-top: 3px;
+}
+
+
+.botondelreporte {
+    margin-top: 11.5px;
+    background-color: rgb(47, 231, 10);
+    border-radius:5px ;
+    border: 3px solid rgb(27, 75, 18);
+    
+    padding: 3px 5px;
+    cursor: pointer;
+ }
+
+ .botondelreporte:hover {
+    transform: scale(1.1);
+ }
+
+ .formulario{
+    border: 3px rgb(2, 100, 192);
+    border-radius: 5px;
+    position: absolute;
+    top:3em;
+    border-style:solid double;
+    max-width:40vh;
+    width:40vh;
+    transition: 0.85s;
+    background-color: rgb(48, 48, 48);
+ }/*disponible en las betta*/
+
+ .formulario-reporte{
+    border: 5px rgb(49, 92, 133);
+    display:block;
+    border-radius: 5px;
+    align-items:center;
+    margin-bottom:2em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style:solid double;
+    max-width:60vh;
+    width:60vh;
+   font-size: 1.5em;
+    transition: 0.85s;
+    background-color: rgb(48, 48, 48);
+ }/*disponible en las betta*/
+ 
+ .formulario:hover {
+    background-color: rgb(68, 72, 73);
+ }
+ 
+ .textoformulario { 
+    display: block;
+ }
+
+ /*radio buttons*/
+ [type="radio"]:not(:checked)+span, [type="radio"]:checked+span {
+  position: relative;
+  padding-left: 28px;
+  padding-right: 10px;
+  cursor: pointer;
+  display: inline-block;
+  height: 10px;
+  font-weight: bold;
+  line-height: 25px;
+  font-size: 1.5rem;
+  -webkit-transition: .28s ease;
+  transition: .28s ease;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color:rgb(20, 250, 181);
+  color: aqua;
+}
+
+[type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
+    background-color: rgb(0, 68, 255);
+}
+
+.icocirculo{position: relative;font-size: 2em;border:2px solid rgb(142 142 142 / 92%);border-radius: 100%;}
+.tituloreporte{text-decoration: underline;color:rgb(0, 71, 0);display:flex;justify-content: center;}
+
+.estadoDelProblemaWord {
+    font-size: 16px;
+}
+
+.letras h3 {
+    font-size: 21px;
+}
+
+.boxDeLaLectura {
+    display: flex;
+    justify-content: center;
+}
+
+.boxLectura {
+    background-color: rgb(4, 170, 79);
+    padding: 20px;
+    margin-left: 1.6em ;
+    margin-right: 1.6em ;
+    border-radius: 15px;
+    border-right:rgb(120, 212, 3) 1.6em double;
+    border-left:rgb(120, 212, 3) 1.6em solid;
+    transition:2s;
+}
+.boxLectura:hover{border-right:rgb(0, 219, 128)  1.6em double;
+    border-left:rgb(0, 219, 128)  1.6em solid;}
+
+    h1 {
+        font-family: 'open-sans'; 
+      }
+      #img_list {
+        background-color: #ccc;
+        min-width: 100%;
+        min-height: 50px;
+      }
+      #img_list li {
+          list-style-type: none;
+          display: inline;
+      }
+      #img_list img {
+          max-width: 200px;
+      }

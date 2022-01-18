@@ -3,8 +3,9 @@ let minutosParticularHtml = document.getElementById('minutosParticularHtml')
 let segundosParticularHtml = document.getElementById('segundosParticularHtml')
 let minutosGeneralHtml = document.getElementById('minutosGeneralHtml')
 let segundosGeneralHtml = document.getElementById('segundosGeneralHtml')
-let espacioParaTiempoParticular = document.getElementById('espacioParaTiempoParticular')
 
+let espacioParaTiempoParticular = document.getElementById('espacioParaTiempoParticular')
+let espacioParaTiempoGeneral = document.getElementById('espacioParaTiempoGeneral')
 // funciones del tiempo
 function correrTiempo(grado) {
  
@@ -51,10 +52,11 @@ function correrTiempo(grado) {
         
          cargarMinutos(segundos,minutos)}
      } else {
-            document.getElementsByClassName("time")[0].style.backgroundColor = "red";
-            segundosParticularHtml.innerHTML = "00"
-            
-     }
+            if(grado=="general"){
+            segundosGeneralHtml.innerHTML = "00";document.getElementsByClassName("generaltime")[0].style.backgroundColor = "darkred";document.getElementsByClassName("generaltime")[0].style.borderColor = "red";
+            }
+            else{segundosParticularHtml.innerHTML = "00";document.getElementsByClassName("time")[0].style.backgroundColor = "red";}
+}
  }
  
  function cargarMinutos(segundos,minutos,grado="particular"){

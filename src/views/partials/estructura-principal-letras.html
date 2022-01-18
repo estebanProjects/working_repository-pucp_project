@@ -1,56 +1,80 @@
 <div class="link-home">
     <a href="/"><i class="fas fa-home"></i>Home</a>
 </div>
-<div class="container">
+<div class="container" id="container">
 
-    <section class="time" id="time">
-        <span id="minutos">--</span>:<span id="segundos">--</span>
+    <section class="time" id="espacioParaTiempoParticular">
+        <span id="minutosParticularHtml">--</span>:<span id="segundosParticularHtml">--</span>
     </section>
-
-    <div class="generaltime">
-        <span id="minutos2" >--</span>:<span id="segundos2" >--</span>
+    <div class="contenedordelostime">
+        <div class="generaltime" id="espacioParaTiempoGeneral">
+            
+            <span id="minutosGeneralHtml" >--</span>:<span id="segundosGeneralHtml" >--</span>
+            
+        </div>
+        <b><p class="indicador-tiempo">-tiempo general</p></b>
     </div>
-
     <main class="PrincipalForSpaces">
-        <div class="spaceForProblems-letras" id="spaceForProblems" >          <!--espacio para los problemas,va primero para cambiar el diseño-->
+         <div class="spaceForProblems-letras" id="espacioParaProblemas">          <!--espacio para los problemas,va primero para cambiar el diseño-->
             <div class="spaceForProblems2-letras" id="spaceForProblems2">
                 <h2>¡Vamos futuro cachimbo!</h2>
                 <img class="logo-pucp" src="./logo/logo-pucp.png" alt="">
             </div>    
         </div>
-        <!--espacio para las resoluciones,van arriba--><div class="solucionproblema" >
-         
-        <div class="spaceForResolution-letras" id="spaceForResolution">
-            <p id="palabraSolucion" >-Solución-</p>
+        <!--espacio para las resoluciones,van arriba-->
+        <div class="parteDerechaSolucion_Correccion" >
+            <div class="spaceForResolution-letras" id="espacioParaSolucion">
+              <p id="palabraSolucion" >Solución</p>
+            </div>
+            <div class="correccion-letras" id="espacioParaCorreccion">
+              <p id="palabraCorreccion-letras">Corrección</p>
+            </div>
         </div>
-
-    
-      <!--Alternativas,van abajo-->
-        <div class="correccion-letras" id="correcion">
-           <div class="resp1"><input type="radio" name="alternativa" id="A" value="a"><b><label for="A">A</label></b></div>
-           <div class="resp2"><input type="radio" name="alternativa" id="B" value="b"><b><label for="B">B</label></b></div>
-           <div class="resp3"><input type="radio" name="alternativa" id="C" value="c"><b><label for="C">C</label></b></div>
-           <div class="resp4"><input type="radio" name="alternativa" id="D" value="d"><b><label for="D">D</label></b></div>
-            
-           <!--aca esta la palabra del div-->
-            <p id="palabraCorreccion-letras">-Corrección/<br>/alternativas-</p>
-        </div>
-
-        
-
     </main>
 
+    <div class="botones_abajo_mas_indicador">
+        <div id="indicadorDeEjercicios"><span id="indicadorDelProblemaActual">0</span>/<span id="indicadorDelTotalDeEjercicios">10</span></div>
 
-    <div class="botones_parte_de_abajo">  <!--botones de la parte de abajo,cuadro verde -->
-      <button class="b" id="retroceder"><i class="fas fa-chevron-left"></i></button>
-          <section class="botons">
-             <a class="empezar" id="empezar">Empezar</a>
-        
-              <div class="cont-inp-comp" id="cont-inp-comp">
-                <a class="comprobar" id="comprobar">Comprobar</a>
-              </div>
-          </section>
-          <button class="b" id="siguiente"><i class="fas fa-chevron-right"></i></button>
-    </section>
+        <div class="botones_parte_de_abajo">
+            <button class="b" id="retroceder"><i class="fas fa-chevron-left"></i></button>
+            <section class="botons">
+                <a class="empezar" id="empezar">Empezar</a>
+                
+                <div class="cont-inp-comp" id="boxDeAlternativasYComprobar">
+    
+                    <form action="#" class="radio" id="radioButtons">
+                       
+                        <label >
+                          <input type="radio" name="alternativa" id="A" value="a" />
+                          <span class=><p class="letra">A</p></span>
+                        </label>
+                     
+                        <label >
+                          <input type="radio" name="alternativa" id="B" value="b" />
+                          <span ><p class="letra">B</p></span>
+                        </label>
+                     
+                        <label >
+                          <input type="radio" name="alternativa" id="C" value="c"  />
+                          <span ><p class="letra">C</p></span>
+                        </label>
+                     
+                     
+                        <label >
+                          <input type="radio" name="alternativa" id="D" value="d"  />
+                          <span ><p class="letra">D</p></span>
+                        </label>
+                      
+                    </form>
+    
+                    <button class="comprobar" id="comprobar">Comprobar</button>
+                </div>
+            </section>
+            <button class="b" id="siguiente"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
 
+</div>
+<div id="reporte">
+    
 </div>
